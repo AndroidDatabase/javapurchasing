@@ -45,7 +45,7 @@ public class JavaApplication1 {
                 Scanner input3 = new Scanner(System.in);
                 int choice1 = input3.nextInt();
                 switch (choice1) {
-                    case 1:
+                    case 1: {
                         System.out.println("");
                         coughMeds.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -61,15 +61,16 @@ public class JavaApplication1 {
                             int choice7 = input9.nextInt();
                             coughMeds.updateMed(coughMeds, choice7);
                             System.out.println("Amount: " + senior.getTotalAmount());
-                            senior.setTotalAmount((choice7 * coughMeds.price(choice2))+senior.getTotalAmount());
+                            senior.setTotalAmount((choice7 * coughMeds.price(choice2)) + senior.getTotalAmount());
                             System.out.println("Total Amount: " + senior.getTotalAmount());
                         } else {
                             break;
                         }
-                        break;
-                    case 2:
+                    }
+                    break;
+                    case 2: {
                         System.out.println("");
-                        headacheMeds.displayMeds( );
+                        headacheMeds.displayMeds();
                         System.out.print("Please enter medicine id :");
                         Scanner input5 = new Scanner(System.in);
                         int choice3 = input5.nextInt();
@@ -83,11 +84,12 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             headacheMeds.updateMed(headacheMeds, choice7);
-                            senior.setTotalAmount((choice7 * headacheMeds.price(choice3))+senior.getTotalAmount());
+                            senior.setTotalAmount((choice7 * headacheMeds.price(choice3)) + senior.getTotalAmount());
                             System.out.println("Initial Total Amount: " + senior.getTotalAmount());
                         }
-                        break;
-                    case 3:
+                    }
+                    break;
+                    case 3: {
                         System.out.println("");
                         painrelievers.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -103,11 +105,13 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             painrelievers.updateMed(painrelievers, choice7);
-                            senior.setTotalAmount((choice7 * painrelievers.price(choice4))+senior.getTotalAmount());
+                            senior.setTotalAmount((choice7 * painrelievers.price(choice4)) + senior.getTotalAmount());
                             System.out.println("Initial Total Amount: " + senior.getTotalAmount());
                         }
-                        break;
-                    case 4:
+                    }
+                    
+                    break;
+                    case 4: {
                         System.out.println("");
                         allergyMeds.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -123,21 +127,24 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             allergyMeds.updateMed(allergyMeds, choice7);
-                            senior.setTotalAmount((choice7 * allergyMeds.price(choice5))+senior.getTotalAmount());
+                            senior.setTotalAmount((choice7 * allergyMeds.price(choice5)) + senior.getTotalAmount());
                             System.out.println("Initial Total Amount: " + senior.getTotalAmount());
                         }
-                        break;
-                    case 5:
+                    }
+                    break;
+                    case 5: {
                         System.out.println("\nYou have 20% discount...");
                         System.out.print("Total amount to pay: ");
                         System.out.println(senior.totalAmountPaid());
                         System.out.println("Thank you!");
-                        done = false;
-                        break;
+                        done = true;
+                    }
+                    break;
                     default:
                         System.out.println("None of the choice!");
                         break;
                 }
+
             }
         } else if (customerAge < 60 && customerAge >= 18) {
             User adult = new Adult(customerName, customerAge);
@@ -148,7 +155,7 @@ public class JavaApplication1 {
                 Scanner input3 = new Scanner(System.in);
                 int choice1 = input3.nextInt();
                 switch (choice1) {
-                    case 1:
+                    case 1: {
                         System.out.println("");
                         coughMeds.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -164,11 +171,13 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             coughMeds.updateMed(coughMeds, choice7);
-                            adult.setTotalAmount((choice7 * coughMeds.price(choice2))+adult.getTotalAmount());
+                            adult.setTotalAmount((choice7 * coughMeds.price(choice2)) + adult.getTotalAmount());
                             System.out.println("Initial Total Amount: " + adult.getTotalAmount());
                         }
-                        break;
-                    case 2:
+
+                    }
+                    break;
+                    case 2: {
                         System.out.println("");
                         headacheMeds.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -184,12 +193,13 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             headacheMeds.updateMed(headacheMeds, choice7);
-                            adult.setTotalAmount((choice7 * headacheMeds.price(choice3))+adult.getTotalAmount());
+                            adult.setTotalAmount((choice7 * headacheMeds.price(choice3)) + adult.getTotalAmount());
                             System.out.println("Initial Total Amount: " + adult.getTotalAmount());
                         }
-                        break;
+                    }
+                    break;
 
-                    case 3:
+                    case 3: {
                         System.out.println("");
                         painrelievers.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -205,12 +215,13 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             painrelievers.updateMed(painrelievers, choice7);
-                            adult.setTotalAmount((choice7 * painrelievers.price(choice4))+adult.getTotalAmount());
+                            adult.setTotalAmount((choice7 * painrelievers.price(choice4)) + adult.getTotalAmount());
                             System.out.println("Initial Total Amount: " + adult.getTotalAmount());
                         }
-                        break;
+                    }
+                    break;
 
-                    case 4:
+                    case 4: {
                         System.out.println("");
                         allergyMeds.displayMeds();
                         System.out.print("Please enter medicine id :");
@@ -226,20 +237,25 @@ public class JavaApplication1 {
                             System.out.print("Quantity : ");
                             int choice7 = input9.nextInt();
                             allergyMeds.updateMed(allergyMeds, choice7);
-                            adult.setTotalAmount((choice7 * allergyMeds.price(choice5))+adult.getTotalAmount());
+                            adult.setTotalAmount((choice7 * allergyMeds.price(choice5)) + adult.getTotalAmount());
                             System.out.println("Initial Total Amount: " + adult.getTotalAmount());
                         }
-                        break;
-                    case 5:
+                    }
+                    break;
+                    case 5: {
                         System.out.print("\nTotal amount to pay: ");
                         System.out.println(adult.totalAmountPaid());
                         System.out.println("Thank you!");
                         done = true;
-                        break;
-                    default:
-                        break;
+//                        break;
+//                    default:
+                    }
+                    break;
                 }
+
+//                break;
             }
+
         } else {
             System.out.println("Your under age!");
         }

@@ -25,7 +25,7 @@ public class PainRelieverMedicine extends Medicine {
 
     @Override
     public void displayMeds() {
-        System.out.println("\nDISPLAY cough Medicines");
+        System.out.println("\nDISPLAY PainReliever Medicines");
         Iterator itr = painRelieverMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
