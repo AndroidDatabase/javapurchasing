@@ -13,12 +13,12 @@ public class Adult extends User {
 
     @Override
     public double totalAmountPaid() {
-        
         return  super.getTotalAmount();
     }
 
-    public Adult(String name, int age) {
-        super(name, age);
+    public Adult(String name, int age, String password, double totalAmount) {
+        super(name, age, password, totalAmount);
     }
+
     
 }

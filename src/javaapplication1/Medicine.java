@@ -5,14 +5,12 @@
  */
 package javaapplication1;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author toringje_sd2022
  */
-public abstract class Medicine {
+public class Medicine {
     private int medId;
     private String medicineName;
     private double medPrice;
@@ -63,13 +61,8 @@ public abstract class Medicine {
 
     @Override
     public String toString() {
-        return "ID:"+medId+"; MEDICINE:"+medicineName+"; PRICE:"+medPrice+"; DESCRIPTION:"+medDesc+"; QUANTITY:"+quantity;
+        return medId+"\t|"+medicineName+"\t\t\t|"+medPrice+"\t\t|"+quantity+"\t\t|"+medDesc;
     }
 
-    public abstract void displayMeds();
-    public abstract void displayMed(int Id);
-    public abstract void updateMed(Medicine medicine, int quantity);
-    public abstract void populate();
-    public abstract double price(int Id);
 }
    

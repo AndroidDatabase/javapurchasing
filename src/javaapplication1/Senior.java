@@ -11,13 +11,13 @@ package javaapplication1;
  */
 public class Senior  extends User {
 
-    public Senior(String name, int age) {
-        super(name, age);
+    public Senior(String name, int age, String password, double totalAmount) {
+        super(name, age, password, totalAmount);
     }
 
     @Override
     public double totalAmountPaid() {
-        super.setTotalAmount(getTotalAmount()-super.getTotalAmount()*0.2);
+        super.setTotalAmount(getTotalAmount()*0.8);
         return super.getTotalAmount();
     }
 }

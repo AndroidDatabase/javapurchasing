@@ -7,7 +7,6 @@ package javaapplication1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -17,16 +16,22 @@ public abstract class User {
 
     private String name;
     private int age;
-    private List<Medicine> purchase = new ArrayList();
-    private double totalAmount = 0;
+    private String password;
+    private double totalAmount;
 
-    public User() {
-
-    }
-
-    public User(String name, int age) {
+    public User(String name, int age, String password, double totalAmount) {
         this.name = name;
         this.age = age;
+        this.password = password;
+        this.totalAmount = totalAmount;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public double getTotalAmount() {
@@ -52,36 +57,6 @@ public abstract class User {
     public void setAge(int age) {
         this.age = age;
     }
-
-    public List<Medicine> getPurchase() {
-        return purchase;
-    }
-
-    public void setPurchase(List<Medicine> purchase) {
-       
-        this.purchase = purchase;
-    }
-
-    public void addpurchaseMed(Medicine medicine) {
-        purchase.add(medicine);
-
-    }
     
     public abstract double totalAmountPaid();
-
-//    public void searhMed() {
-//        System.out.println("----------------Medicine Category-----------------\n");
-//        System.out.println("A.Cough\nB.Headache\nC.Bodypain\nD.Allergy");
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Enter letter: ");
-//        String med = input.nextLine();
-//        if ("A".equals(med)) {
-//            System.out.println("Decolgen Forte, Neozep Forte, Solmux");
-//        }
-//        else if("B".equals(med)){
-//            System.out.println("Bioflu, Biogesic, Rexidol Forte");
-//        }
-//
-//    }
-
 }
