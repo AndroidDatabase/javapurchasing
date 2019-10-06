@@ -17,19 +17,19 @@ import static javaapplication1.ListOfReceipts.add;
  *
  * @author 2ndyrGroupC
  */
-public class ListOfAllergyMed {
+public class ListOfPainRelieverMed {
+    
+    ArrayList<PainRelieverMedicine> prMeds;
 
-    ArrayList<AllergyMedicine> allergyMeds;
-
-    public ListOfAllergyMed() {
-        allergyMeds = new ArrayList<>();
+    public ListOfPainRelieverMed() {
+        prMeds = new ArrayList<>();
         populate();
     }
 
     public void displayMeds() {
-        System.out.println("\n\t\t*** M E D I C I N E S  F O R  A L L E R G Y  ***\n");
+        System.out.println("\n\t\t*** M E D I C I N E S  F O R  C O U G H  ***\n");
         System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
-        Iterator itr = allergyMeds.iterator();
+        Iterator itr = prMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
         }
@@ -37,7 +37,7 @@ public class ListOfAllergyMed {
     }
 
     public boolean updateMed(int ID, int quantity) {
-        for (AllergyMedicine a : allergyMeds) {
+        for (PainRelieverMedicine a : prMeds) {
             if (a.getMedId() == ID) {
                 if (a.getQuantity() >= quantity) {
                     a.setQuantity(a.getQuantity() - quantity);
@@ -56,34 +56,34 @@ public class ListOfAllergyMed {
     }
 
     public void populate() {
-        allergyMeds.add(new AllergyMedicine(401, "Cetirizine Dihydrochloride", 20.25, 30,
-                "BRAND NAME:Zyriz; GENERIC NAME:Cetirizine Dihydrochloride; USES:for allergies"));
-        allergyMeds.add(new AllergyMedicine(402, "Loratadine", 23.75, 30,
-                "BRAND NAME:Lorexa QD; GENERIC NAME:Loratadine; USES:for allergies"));
-        allergyMeds.add(new AllergyMedicine(403, "Antihistamine", 22.15, 30,
-                "BRAND NAME:Allerta; GENERIC NAME:Antihistamine; USES:for allergies"));
+        prMeds.add(new PainRelieverMedicine(301, "Ibuprofen + Paracetamol", 6, 30,
+                "BRAND NAME:Alaxan; GENERIC NAME:Ibuprofen + Paracetamol; USES:for pain reliever"));
+        prMeds.add(new PainRelieverMedicine(302, "Mefenamic Acid", 6, 30,
+                "BRAND NAME:Dolfenal; GENERIC NAME:Mefenamic Acid; USES:for pain reliever"));
+        prMeds.add(new PainRelieverMedicine(303, "Ibuprofen", 6, 30,
+                "BRAND NAME:Medicol Advance; GENERIC NAME:Ibuprofen; USES:for pain reliever"));
     }
 
     public void displayMed(int Id) {
         System.out.println("\n\t\t\t- Medicine's Information -");
-        allergyMeds.stream().filter((allergyMed) -> (allergyMed.getMedId() == Id)).map((allergyMed) -> {
-            System.out.println("Name : " + allergyMed.getMedicineName());
-            return allergyMed;
-        }).map((allergyMed) -> {
-            System.out.println("Description : " + allergyMed.getMedDesc());
-            return allergyMed;
-        }).map((allergyMed) -> {
-            System.out.println("Price : " + allergyMed.getMedPrice());
-            return allergyMed;
-        }).forEach((allergyMed) -> {
-            System.out.println("Quantity : " + allergyMed.getQuantity());
+        prMeds.stream().filter((prMed) -> (prMed.getMedId() == Id)).map((prMed) -> {
+            System.out.println("Name : " + prMed.getMedicineName());
+            return prMed;
+        }).map((prMed) -> {
+            System.out.println("Description : " + prMed.getMedDesc());
+            return prMed;
+        }).map((prMed) -> {
+            System.out.println("Price : " + prMed.getMedPrice());
+            return prMed;
+        }).forEach((prMed) -> {
+            System.out.println("Quantity : " + prMed.getQuantity());
         });
     }
 
     public double price(int id) {
-        for (AllergyMedicine allergyMed : allergyMeds) {
-            if (allergyMed.getMedId() == id) {
-                return allergyMed.getMedPrice();
+        for (PainRelieverMedicine prMed : prMeds) {
+            if (prMed.getMedId() == id) {
+                return prMed.getMedPrice();
             }
         }
         return 0;
@@ -123,4 +123,5 @@ public class ListOfAllergyMed {
             }
         }
     }
+    
 }

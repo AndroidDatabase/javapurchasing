@@ -17,7 +17,7 @@ public class Senior  extends User {
 
     @Override
     public double totalAmountPaid() {
-        super.setTotalAmount(getTotalAmount()*0.8);
+        super.setTotalAmount(super.getTotalAmount()*0.8);
         return super.getTotalAmount();
     }
 }

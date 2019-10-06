@@ -17,19 +17,19 @@ import static javaapplication1.ListOfReceipts.add;
  *
  * @author 2ndyrGroupC
  */
-public class ListOfAllergyMed {
+public class ListOfCoughMed {
+    
+    ArrayList<CoughMedicine> coughMeds;
 
-    ArrayList<AllergyMedicine> allergyMeds;
-
-    public ListOfAllergyMed() {
-        allergyMeds = new ArrayList<>();
+    public ListOfCoughMed() {
+        coughMeds = new ArrayList<>();
         populate();
     }
 
     public void displayMeds() {
-        System.out.println("\n\t\t*** M E D I C I N E S  F O R  A L L E R G Y  ***\n");
+        System.out.println("\n\t\t*** M E D I C I N E S  F O R  C O U G H  ***\n");
         System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
-        Iterator itr = allergyMeds.iterator();
+        Iterator itr = coughMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
         }
@@ -37,7 +37,7 @@ public class ListOfAllergyMed {
     }
 
     public boolean updateMed(int ID, int quantity) {
-        for (AllergyMedicine a : allergyMeds) {
+        for (CoughMedicine a : coughMeds) {
             if (a.getMedId() == ID) {
                 if (a.getQuantity() >= quantity) {
                     a.setQuantity(a.getQuantity() - quantity);
@@ -56,34 +56,34 @@ public class ListOfAllergyMed {
     }
 
     public void populate() {
-        allergyMeds.add(new AllergyMedicine(401, "Cetirizine Dihydrochloride", 20.25, 30,
-                "BRAND NAME:Zyriz; GENERIC NAME:Cetirizine Dihydrochloride; USES:for allergies"));
-        allergyMeds.add(new AllergyMedicine(402, "Loratadine", 23.75, 30,
-                "BRAND NAME:Lorexa QD; GENERIC NAME:Loratadine; USES:for allergies"));
-        allergyMeds.add(new AllergyMedicine(403, "Antihistamine", 22.15, 30,
-                "BRAND NAME:Allerta; GENERIC NAME:Antihistamine; USES:for allergies"));
+        coughMeds.add(new CoughMedicine(101, "Carbocisteine + Zinc", 42.50, 30,
+                "BRAND NAME:Solmux Advance; GENERIC NAME:Carbocisteine + Zinc; USES:for cough"));
+        coughMeds.add(new CoughMedicine(102, "Ambroxol HCI", 32.75, 30,
+                "BRAND NAME:Expel OD; GENERIC NAME:Ambroxol HCI; USES:for cough"));
+        coughMeds.add(new CoughMedicine(103, "Dextromethorphan HBr Phenylpropanolamine HCI Paracetamol", 9.75, 30,
+                "BRAND NAME:Tuseran Forte; GENERIC NAME:Dextromethorphan HBr Phenylpropanolamine HCI Paracetamol; USES:for cough"));
     }
 
     public void displayMed(int Id) {
         System.out.println("\n\t\t\t- Medicine's Information -");
-        allergyMeds.stream().filter((allergyMed) -> (allergyMed.getMedId() == Id)).map((allergyMed) -> {
-            System.out.println("Name : " + allergyMed.getMedicineName());
-            return allergyMed;
-        }).map((allergyMed) -> {
-            System.out.println("Description : " + allergyMed.getMedDesc());
-            return allergyMed;
-        }).map((allergyMed) -> {
-            System.out.println("Price : " + allergyMed.getMedPrice());
-            return allergyMed;
-        }).forEach((allergyMed) -> {
-            System.out.println("Quantity : " + allergyMed.getQuantity());
+        coughMeds.stream().filter((coughMed) -> (coughMed.getMedId() == Id)).map((coughMed) -> {
+            System.out.println("Name : " + coughMed.getMedicineName());
+            return coughMed;
+        }).map((coughMed) -> {
+            System.out.println("Description : " + coughMed.getMedDesc());
+            return coughMed;
+        }).map((coughMed) -> {
+            System.out.println("Price : " + coughMed.getMedPrice());
+            return coughMed;
+        }).forEach((coughMed) -> {
+            System.out.println("Quantity : " + coughMed.getQuantity());
         });
     }
 
     public double price(int id) {
-        for (AllergyMedicine allergyMed : allergyMeds) {
-            if (allergyMed.getMedId() == id) {
-                return allergyMed.getMedPrice();
+        for (CoughMedicine coughMed : coughMeds) {
+            if (coughMed.getMedId() == id) {
+                return coughMed.getMedPrice();
             }
         }
         return 0;

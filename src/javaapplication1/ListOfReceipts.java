@@ -12,17 +12,17 @@ import java.util.ArrayList;
  * @author 2ndyrGroupC
  */
 public class ListOfReceipts {
-    ArrayList<Receipt> receipts;
+    static ArrayList<Receipt> receipts;
 
     public ListOfReceipts() {
         receipts = new ArrayList();
     }
     
-    public void add(int ID, String desc, double price, int quantity, double total) {
+    public static void add(int ID, String desc, double price, int quantity, double total) {
         receipts.add(new Receipt(ID, desc, price, quantity, total));
     }
     
-    public void retrieve() {
+    public static void retrieve() {
         System.out.println("\n\t\t*** R E C E I P T ***");
         System.out.println("ID\tMEDICINE\t\t\tPRICE\tQUANTITY\tTOTAL\n");
         receipts.stream().forEach((r) -> {

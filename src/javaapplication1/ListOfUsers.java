@@ -14,8 +14,8 @@ import java.util.Scanner;
  */
 public class ListOfUsers {
 
-    ArrayList<Adult> adults;
-    ArrayList<Senior> seniors;
+    static ArrayList<Adult> adults;
+    static ArrayList<Senior> seniors;
     private String name;
     private String password;
     private int age;
@@ -43,15 +43,15 @@ public class ListOfUsers {
         if (age < 18) {
             System.out.println("You are under age!");
         } else if (age >= 60) {
-            seniors.add(new Senior(name, age, password, total));
+            seniors.add(new Senior(name, age, password, 0.0));
             System.out.println("You are registered!");
         } else {
-            adults.add(new Adult(name, age, password, total));
+            adults.add(new Adult(name, age, password, 0.0));
             System.out.println("You are registered!");
         }
     }
 
-    public int logIn() {
+    public String logIn() {
         System.out.println("\n*** LOG IN ***");
         System.out.print("Enter username : ");
         name = inputName.nextLine();
@@ -63,16 +63,31 @@ public class ListOfUsers {
                     password = inputPass.nextLine();
                     if (adults.get(i).getPassword().equals(password)) {
                         System.out.println("You are now logged in!");
-                        return adults.get(i).getAge();
+                        return adults.get(i).getName();
                     } else {
                         System.out.println("Incorrect password!");
                     }
                 }
-            } else if (i == adults.size() - 1) {
+            }
+        }
+
+        for (int i = 0; i < seniors.size(); i++) {
+            if (seniors.get(i).getName().equals(name)) {
+                while (true) {
+                    System.out.print("Enter password : ");
+                    password = inputPass.nextLine();
+                    if (seniors.get(i).getPassword().equals(password)) {
+                        System.out.println("You are now logged in!");
+                        return seniors.get(i).getName();
+                    } else {
+                        System.out.println("Incorrect password!");
+                    }
+                }
+            } else if (i == seniors.size() - 1) {
                 System.out.println("You are not yet registered!");
             }
         }
-        return 0;
+        return null;
     }
     
 }
