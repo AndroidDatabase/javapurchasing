@@ -1,4 +1,4 @@
-/*
+                                   /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,6 +20,14 @@ import static javaapplication1.ListOfReceipts.add;
 public class ListOfPainRelieverMed {
     
     ArrayList<PainRelieverMedicine> prMeds;
+    Scanner inputID = new Scanner(System.in);
+    Scanner inputName = new Scanner(System.in);
+    Scanner inputPrice = new Scanner(System.in);
+    Scanner inputQuantity = new Scanner(System.in);
+    Scanner inputDescription = new Scanner(System.in);
+    Scanner inputGName = new Scanner(System.in);
+    Scanner inputBName = new Scanner(System.in);
+    Scanner inputUses = new Scanner(System.in);
 
     public ListOfPainRelieverMed() {
         prMeds = new ArrayList<>();
@@ -27,13 +35,13 @@ public class ListOfPainRelieverMed {
     }
 
     public void displayMeds() {
-        System.out.println("\n\t\t*** M E D I C I N E S  F O R  C O U G H  ***\n");
+        System.out.println("\n\t\t*** M E D I C I N E S  F O R  P A I N  R E L I E V E R ***\n");
         System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
         Iterator itr = prMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
         }
-        System.out.print("\nPlease enter medicine id : ");
+        System.out.print("\n");
     }
 
     public boolean updateMed(int ID, int quantity) {
@@ -88,10 +96,41 @@ public class ListOfPainRelieverMed {
         }
         return 0;
     }
+    
+    public void addMedicine() {
+        System.out.println("--- ADD PAIN RELIEVER MEDICINE ---");
+        System.out.print("Enter Medicine Name : ");
+        String med = inputName.nextLine();
+        System.out.print("Enter Medicine Price : ");
+        double price = inputPrice.nextDouble();
+        System.out.print("Enter Medicine Quantity : ");
+        int quantity = inputQuantity.nextInt();
+        System.out.print("Enter Medicine Brand Name : ");
+        String bName = inputBName.nextLine();
+        System.out.print("Enter Medicine Generic Name : ");
+        String gName = inputGName.nextLine();
+        System.out.print("Enter Medicine Use :");
+        String use = inputUses.nextLine();
+        prMeds.add(new PainRelieverMedicine(prMeds.get(prMeds.size()-1).getMedId()+1, med, price, quantity, "BRAND NAME:" + bName + "; GENERIC NAME:" + gName + "; USES:" + use));
+    }
+    
+    public void removeMedicine() {
+        System.out.println("\n--- REMOVE PAIN RELIEVER MEDICINE ---");
+        System.out.print("Enter Medicine ID : ");
+        int id = inputID.nextInt();
+        for (int i = 0; i < prMeds.size(); i++) {
+            if (prMeds.get(i).getMedId() == id) {
+                System.out.println(prMeds.get(i).getMedicineName() + " is removed.");
+                prMeds.remove(i);
+                break;
+            }
+        }
+    }
 
     public void run(String username) {
         displayMeds();
         Scanner inputID = new Scanner(System.in);
+        System.out.print("Choose Medicine ID : ");
         int ID = inputID.nextInt();
         displayMed(ID);
         System.out.println("\nDo you want to purchase ? (y / n)");

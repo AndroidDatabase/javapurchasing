@@ -5,6 +5,7 @@
  */
 package javaapplication1;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -20,6 +21,14 @@ import static javaapplication1.ListOfReceipts.add;
 public class ListOfAllergyMed {
 
     ArrayList<AllergyMedicine> allergyMeds;
+    Scanner inputID = new Scanner(System.in);
+    Scanner inputName = new Scanner(System.in);
+    Scanner inputPrice = new Scanner(System.in);
+    Scanner inputQuantity = new Scanner(System.in);
+    Scanner inputDescription = new Scanner(System.in);
+    Scanner inputGName = new Scanner(System.in);
+    Scanner inputBName = new Scanner(System.in);
+    Scanner inputUses = new Scanner(System.in);
 
     public ListOfAllergyMed() {
         allergyMeds = new ArrayList<>();
@@ -33,7 +42,7 @@ public class ListOfAllergyMed {
         while (itr.hasNext()) {
             System.out.println(itr.next());
         }
-        System.out.print("\nPlease enter medicine id : ");
+        System.out.println("\n");
     }
 
     public boolean updateMed(int ID, int quantity) {
@@ -88,10 +97,41 @@ public class ListOfAllergyMed {
         }
         return 0;
     }
+    
+    public void addMedicine() {
+        System.out.println("--- ADD ALLERGY MEDICINE ---");
+        System.out.print("Enter Medicine Name : ");
+        String med = inputName.nextLine();
+        System.out.print("Enter Medicine Price : ");
+        double price = inputPrice.nextDouble();
+        System.out.print("Enter Medicine Quantity : ");
+        int quantity = inputQuantity.nextInt();
+        System.out.print("Enter Medicine Brand Name : ");
+        String bName = inputBName.nextLine();
+        System.out.print("Enter Medicine Generic Name : ");
+        String gName = inputGName.nextLine();
+        System.out.print("Enter Medicine Use :");
+        String use = inputUses.nextLine();
+        allergyMeds.add(new AllergyMedicine(allergyMeds.get(allergyMeds.size()-1).getMedId()+1, med, price, quantity, "BRAND NAME:" + bName + "; GENERIC NAME:" + gName + "; USES:" + use));
+    }
+    
+    public void removeMedicine() {
+        System.out.println("\n--- REMOVE ALLERGY MEDICINE ---");
+        System.out.print("Enter Medicine ID : ");
+        int id = inputID.nextInt();
+        for (int i = 0; i < allergyMeds.size(); i++) {
+            if (allergyMeds.get(i).getMedId() == id) {
+                System.out.println(allergyMeds.get(i).getMedicineName() + " is removed.");
+                allergyMeds.remove(i);
+                break;
+            }
+        }
+    }
 
     public void run(String username) {
         displayMeds();
         Scanner inputID = new Scanner(System.in);
+        System.out.print("Choice Medicine ID : ");
         int ID = inputID.nextInt();
         displayMed(ID);
         System.out.println("\nDo you want to purchase ? (y / n)");
