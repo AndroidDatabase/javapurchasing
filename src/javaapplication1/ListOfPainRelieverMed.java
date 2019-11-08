@@ -36,7 +36,7 @@ public class ListOfPainRelieverMed {
 
     public void displayMeds() {
         System.out.println("\n\t\t*** M E D I C I N E S  F O R  P A I N  R E L I E V E R ***\n");
-        System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
+        System.out.println("ID\t|MEDICINE\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
         Iterator itr = prMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
@@ -63,7 +63,7 @@ public class ListOfPainRelieverMed {
         return false;
     }
 
-    public void populate() {
+    public final void populate() {
         prMeds.add(new PainRelieverMedicine(301, "Ibuprofen + Paracetamol", 6, 30,
                 "BRAND NAME:Alaxan; GENERIC NAME:Ibuprofen + Paracetamol; USES:for pain reliever"));
         prMeds.add(new PainRelieverMedicine(302, "Mefenamic Acid", 6, 30,

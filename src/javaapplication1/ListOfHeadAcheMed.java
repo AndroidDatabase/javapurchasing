@@ -36,7 +36,7 @@ public class ListOfHeadAcheMed {
 
     public void displayMeds() {
         System.out.println("\n\t\t*** M E D I C I N E S  F O R  H E A C H A C H E ***\n");
-        System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
+        System.out.println("ID\t|MEDICINE\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
         Iterator itr = haMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
@@ -63,7 +63,7 @@ public class ListOfHeadAcheMed {
         return false;
     }
 
-    public void populate() {
+    public final void populate() {
         haMeds.add(new HeadacheMedicine(201, "Phenylephrine HCI Ibuprofen", 6, 30,
                 "BRAND NAME:Bioflu Non-Drowsy; GENERIC NAME:Phenylephrine HCI Ibuprofen; USES:for fever reduction"));
         haMeds.add(new HeadacheMedicine(202, "Paracetamol Caffeine", 6, 30,

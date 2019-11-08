@@ -19,6 +19,7 @@ public class ListOfUsers {
     static ArrayList<Pharmacists> pharmacists;
     ArrayList<String> returned;
     private String name;
+    private String email;
     private String password;
     private int age;
     Scanner inputName = new Scanner(System.in);
@@ -43,6 +44,8 @@ public class ListOfUsers {
         String inputUser = registeruser.nextLine();
         System.out.print("\nEnter username : ");
         name = inputName.nextLine();
+        System.out.print("Enter email : ");
+        email = inputName.nextLine();
         System.out.print("Enter password : ");
         password = inputPass.nextLine();
         System.out.print("Enter age : ");
@@ -73,7 +76,7 @@ public class ListOfUsers {
     public ArrayList<String> logIn() {
         returned = new ArrayList();
         System.out.println("\n*** LOG IN ***");
-        System.out.println("1 -- Register as USER\n2 -- Register as PHARMACIST");
+        System.out.println("1 -- Login as USER\n2 -- Login as PHARMACIST");
         System.out.print("Enter a choice : ");
         String inputUser = logInuser.nextLine();
         System.out.print("\nEnter username : ");

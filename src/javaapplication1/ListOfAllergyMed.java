@@ -36,7 +36,7 @@ public class ListOfAllergyMed {
 
     public void displayMeds() {
         System.out.println("\n\t\t*** M E D I C I N E S  F O R  A L L E R G Y  ***\n");
-        System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
+        System.out.println("ID\t|MEDICINE\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
         Iterator itr = allergyMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());

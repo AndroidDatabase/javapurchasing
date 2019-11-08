@@ -26,6 +26,15 @@ public class JavaApplication1 {
         ListOfCoughMed c = new ListOfCoughMed();
         ListOfHeadAcheMed h = new ListOfHeadAcheMed();
         ListOfPainRelieverMed p = new ListOfPainRelieverMed();
+        
+        //Caling JPanel
+        JTPharmacy mob = new JTPharmacy();
+        Login jes = new Login();
+        Register vin = new Register();
+        
+        
+       
+        
         while (true) {
             ListOfReceipts receipt = new ListOfReceipts();
             boolean exit = false;

@@ -36,7 +36,7 @@ public class ListOfCoughMed {
 
     public void displayMeds() {
         System.out.println("\n\t\t*** M E D I C I N E S  F O R  C O U G H  ***\n");
-        System.out.println("ID\t|MEDICINE\t\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
+        System.out.println("ID\t|MEDICINE\t\t|PRICE\t\t|QUANTITY\t\t|DESCRIPTION\n");
         Iterator itr = coughMeds.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());
@@ -63,7 +63,7 @@ public class ListOfCoughMed {
         return false;
     }
 
-    public void populate() {
+    public final void populate() {
         coughMeds.add(new CoughMedicine(101, "Carbocisteine + Zinc", 42.50, 30,
                 "BRAND NAME:Solmux Advance; GENERIC NAME:Carbocisteine + Zinc; USES:for cough"));
         coughMeds.add(new CoughMedicine(102, "Ambroxol HCI", 32.75, 30,
