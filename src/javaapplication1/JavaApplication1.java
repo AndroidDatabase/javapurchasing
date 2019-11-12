@@ -5,6 +5,8 @@
  */
 package javaapplication1;
 
+import Jframe.Login;
+import Jframe.Register;
 import java.util.ArrayList;
 import java.util.Scanner;
 import static javaapplication1.ListOfReceipts.retrieve;
@@ -28,7 +30,7 @@ public class JavaApplication1 {
         ListOfPainRelieverMed p = new ListOfPainRelieverMed();
         
         //Caling JPanel
-        JTPharmacy mob = new JTPharmacy();
+       
         Login jes = new Login();
         Register vin = new Register();
         
