@@ -5,6 +5,9 @@
  */
 package Jframe;
 
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author toringje_sd2022
@@ -85,6 +88,11 @@ public class Register extends javax.swing.JFrame {
         agelabel.setText("Age:");
 
         agecombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        agecombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agecomboActionPerformed(evt);
+            }
+        });
 
         registerbutton.setBackground(new java.awt.Color(0, 0, 204));
         registerbutton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -98,7 +106,8 @@ public class Register extends javax.swing.JFrame {
 
         jLabel2.setText("Already have an account?  ");
 
-        signInlabel.setText("Sign In");
+        signInlabel.setForeground(new java.awt.Color(0, 0, 204));
+        signInlabel.setText("Sign In!");
         signInlabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signInlabelMouseClicked(evt);
@@ -196,17 +205,23 @@ public class Register extends javax.swing.JFrame {
 
     private void signInlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInlabelMouseClicked
         // TODO add your handling code here:
-         Login login = new Login();
+        Login login = new Login();
         login.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signInlabelMouseClicked
 
     private void registerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbuttonActionPerformed
         // TODO add your handling code here:
-         NextPage customer = new NextPage();
+        NextPage customer = new NextPage();
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerbuttonActionPerformed
+
+    private void agecomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agecomboActionPerformed
+        // TODO add your handling code here:
+        
+       
+    }//GEN-LAST:event_agecomboActionPerformed
 
     /**
      * @param args the command line arguments

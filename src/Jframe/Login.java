@@ -213,8 +213,11 @@ public class Login extends javax.swing.JFrame {
             page.setVisible(true);
             JLabel label = new JLabel("Welcome:" + user);
             page.getContentPane().add(label);
+        } else if (user.equals("") || password.equals("")) {
+            JOptionPane.showMessageDialog(this, "Enter the valid username and password",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+//                    
         } else {
-            System.out.println("enter the valid username and password");
             JOptionPane.showMessageDialog(this, "Incorrect login or password",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -236,7 +239,7 @@ public class Login extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
