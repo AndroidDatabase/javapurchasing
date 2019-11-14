@@ -212,7 +212,7 @@ public class Register extends javax.swing.JFrame {
 
     private void registerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbuttonActionPerformed
         // TODO add your handling code here:
-        NextPage customer = new NextPage();
+        Cough customer = new Cough();
         customer.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerbuttonActionPerformed

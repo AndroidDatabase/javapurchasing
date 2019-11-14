@@ -209,7 +209,7 @@ public class Login extends javax.swing.JFrame {
         System.out.println(password);
 
         if (user.equals("jess") && password.equals("melvin")) {
-            NextPage page = new NextPage();
+            Cough page = new Cough();
             page.setVisible(true);
             JLabel label = new JLabel("Welcome:" + user);
             page.getContentPane().add(label);
