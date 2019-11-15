@@ -100,6 +100,11 @@ public class Login extends javax.swing.JFrame {
         Loginbutton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         Loginbutton.setForeground(new java.awt.Color(255, 255, 255));
         Loginbutton.setText("LOGIN");
+        Loginbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginbuttonMouseClicked(evt);
+            }
+        });
         Loginbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginbuttonActionPerformed(evt);
@@ -232,6 +237,13 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_signUptextMouseClicked
+
+    private void LoginbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbuttonMouseClicked
+        // TODO add your handling code here:
+        NextPage next = new NextPage();
+        Loginbutton.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_LoginbuttonMouseClicked
 
     /**
      * @param args the command line arguments

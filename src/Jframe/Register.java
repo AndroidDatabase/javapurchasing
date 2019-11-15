@@ -88,6 +88,7 @@ public class Register extends javax.swing.JFrame {
         agelabel.setText("Age:");
 
         agecombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        agecombo.setSelectedItem(agecombo);
         agecombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agecomboActionPerformed(evt);
@@ -98,6 +99,11 @@ public class Register extends javax.swing.JFrame {
         registerbutton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         registerbutton.setForeground(new java.awt.Color(255, 255, 255));
         registerbutton.setText("Register");
+        registerbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerbuttonMouseClicked(evt);
+            }
+        });
         registerbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerbuttonActionPerformed(evt);
@@ -212,16 +218,21 @@ public class Register extends javax.swing.JFrame {
 
     private void registerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbuttonActionPerformed
         // TODO add your handling code here:
-        Cough customer = new Cough();
-        customer.setVisible(true);
-        this.setVisible(false);
+
     }//GEN-LAST:event_registerbuttonActionPerformed
 
     private void agecomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agecomboActionPerformed
         // TODO add your handling code here:
-        
-       
+
+
     }//GEN-LAST:event_agecomboActionPerformed
+
+    private void registerbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerbuttonMouseClicked
+        // TODO add your handling code here:
+        Login med = new Login();
+        med.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_registerbuttonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,4 +288,5 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField usernamefield;
     private javax.swing.JLabel usernamelabel;
     // End of variables declaration//GEN-END:variables
+
 }
