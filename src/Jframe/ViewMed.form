@@ -29,7 +29,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
@@ -56,24 +56,27 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jScrollPane4" alignment="1" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="493" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="Category" min="-2" pref="163" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane2" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jScrollPane3" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jScrollPane1" min="-2" pref="677" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -123,10 +126,7 @@
                           <Component id="jScrollPane4" min="-2" pref="127" max="-2" attributes="0"/>
                           <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel4" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jPanel4" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -227,10 +227,10 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="jButton2" max="32767" attributes="0"/>
+                          <Component id="View" max="32767" attributes="0"/>
+                          <Component id="Addmed" max="32767" attributes="0"/>
                           <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="logout1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -240,20 +240,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="View" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="Addmed" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="logout1" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="View">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -263,8 +263,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="VIEW MEDICINE"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ViewMouseClicked"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="Addmed">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -274,6 +277,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="ADD MEDICINE"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddmedActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
@@ -286,7 +292,7 @@
                 <Property name="text" type="java.lang.String" value="DELETE MEDICINE"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="logout1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -296,6 +302,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="LOGOUT"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logout1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -319,7 +328,7 @@
                   <Color blue="ff" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="6">
+                  <Table columnCount="7" rowCount="6">
                     <Column editable="true" title="MEDICINE ID" type="java.lang.Object">
                       <Data value="   101"/>
                       <Data value="   102"/>
@@ -368,10 +377,23 @@
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
+                    <Column editable="true" title="DESCRIPTION" type="java.lang.Object">
+                      <Data value="Use for cough"/>
+                      <Data value="Use for asthma"/>
+                      <Data value="Use for cough and fever"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -432,31 +454,31 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="6">
-                    <Column editable="true" title="MEDICINE ID" type="java.lang.Object">
-                      <Data value="   201"/>
-                      <Data value="   202"/>
-                      <Data value="   203"/>
+                    <Column editable="true" title="MEDICINE ID" type="java.lang.Integer">
+                      <Data value="201"/>
+                      <Data value="202"/>
+                      <Data value="203"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="NAME" type="java.lang.Object">
-                      <Data value="Bioflu"/>
+                    <Column editable="true" title="NAME" type="java.lang.String">
+                      <Data value="Biolfu"/>
                       <Data value="Rexidol"/>
-                      <Data value="Paracetamol"/>
+                      <Data value="Paracetamo"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="PRICE" type="java.lang.Object">
-                      <Data value="6"/>
-                      <Data value="6"/>
-                      <Data value=" 6&#x9;"/>
+                    <Column editable="true" title="PRICE" type="java.lang.Double">
+                      <Data value="6.0"/>
+                      <Data value="6.0"/>
+                      <Data value="6.0"/>
                       <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="QUANTITY" type="java.lang.Object">
+                    <Column editable="true" title="QUANTITY" type="java.lang.Integer">
                       <Data value="30"/>
                       <Data value="30"/>
                       <Data value="30"/>
@@ -464,7 +486,7 @@
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="BRAND NAME" type="java.lang.Object">
+                    <Column editable="true" title="BRAND NAME" type="java.lang.String">
                       <Data value="Bioflu Non-Drowsy"/>
                       <Data value="Rexidol Forte"/>
                       <Data value="Biogesic"/>
@@ -472,11 +494,11 @@
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
-                    <Column editable="true" title="GENERIC NAME" type="java.lang.Object">
+                    <Column editable="true" title="GENERIC NAME" type="java.lang.String">
                       <Data value="Phenylephrine HCI Ibuprofen"/>
                       <Data value="Paracetamol Caffeine"/>
                       <Data value="Paracetamol"/>
-                      <Data value=""/>
+                      <Data value="null"/>
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>

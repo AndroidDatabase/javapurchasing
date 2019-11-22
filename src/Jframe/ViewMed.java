@@ -5,16 +5,18 @@
  */
 package Jframe;
 
+import java.awt.Color;
+
 /**
  *
  * @author 2ndyrGroupB
  */
-public class NextPage extends javax.swing.JFrame {
+public class ViewMed extends javax.swing.JFrame {
 
     /**
      * Creates new form NextPage
      */
-    public NextPage() {
+    public ViewMed() {
         initComponents();
     }
 
@@ -33,10 +35,10 @@ public class NextPage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Category = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        View = new javax.swing.JButton();
+        Addmed = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        logout1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         medtable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -89,21 +91,36 @@ public class NextPage extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("VIEW MEDICINE");
+        View.setBackground(new java.awt.Color(255, 204, 204));
+        View.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        View.setText("VIEW MEDICINE");
+        View.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ViewMouseClicked(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("ADD MEDICINE");
+        Addmed.setBackground(new java.awt.Color(255, 204, 204));
+        Addmed.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Addmed.setText("ADD MEDICINE");
+        Addmed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddmedActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 204, 204));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("DELETE MEDICINE");
 
-        jButton4.setBackground(new java.awt.Color(255, 204, 204));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("LOGOUT");
+        logout1.setBackground(new java.awt.Color(255, 204, 204));
+        logout1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        logout1.setText("LOGOUT");
+        logout1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -112,23 +129,23 @@ public class NextPage extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(View, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Addmed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logout1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Addmed, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logout1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -137,15 +154,15 @@ public class NextPage extends javax.swing.JFrame {
         medtable.setBackground(new java.awt.Color(153, 153, 255));
         medtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc"},
-                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI"},
-                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc", "Use for cough"},
+                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI", "Use for asthma"},
+                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", "Use for cough and fever"},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME"
+                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane1.setViewportView(medtable);
@@ -155,17 +172,25 @@ public class NextPage extends javax.swing.JFrame {
         medtable1.setBackground(new java.awt.Color(153, 153, 255));
         medtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   201", "Bioflu", "6", "30", "Bioflu Non-Drowsy", "Phenylephrine HCI Ibuprofen"},
-                {"   202", "Rexidol", "6", "30", "Rexidol Forte", "Paracetamol Caffeine"},
-                {"   203", "Paracetamol", " 6	", "30", "Biogesic", "Paracetamol"},
-                {null, null, null, null, null, ""},
+                { new Integer(201), "Biolfu",  new Double(6.0),  new Integer(30), "Bioflu Non-Drowsy", "Phenylephrine HCI Ibuprofen"},
+                { new Integer(202), "Rexidol",  new Double(6.0),  new Integer(30), "Rexidol Forte", "Paracetamol Caffeine"},
+                { new Integer(203), "Paracetamo",  new Double(6.0),  new Integer(30), "Biogesic", "Paracetamol"},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
                 "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(medtable1);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -229,19 +254,21 @@ public class NextPage extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3)
-                                .addGap(257, 257, 257))
+                                .addGap(269, 269, 269))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 493, Short.MAX_VALUE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(9, 9, 9))
-                                    .addComponent(jScrollPane2)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(jScrollPane3))))
-                        .addGap(20, 20, 20))
+                                    .addComponent(jScrollPane3)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane2))))
+                        .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
@@ -281,9 +308,7 @@ public class NextPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(22, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,7 +320,7 @@ public class NextPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
@@ -305,22 +330,43 @@ public class NextPage extends javax.swing.JFrame {
 
     private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
         // TODO add your handling code here:
+        
+        
 
-        //        Object selected = Category.getSelectedItem();
-        //        if (selected.equals("Medicine For Cough")) {
-            //            medtable.setBackground(Color.gray);
-            //            System.out.println("Cough Medicine");
-            //        } else if (selected.equals("Medicine For Headache")) {
-            //            medtable.setBackground(Color.pink);
-            //            System.out.println("Headache Medicine");
-            //        } else if (selected.equals("Medicine For Pain Reliever")) {
-            //            medtable.setBackground(Color.pink);
-            //            System.out.println("Pain Reliever Medicine");
-            //        } else if (selected.equals("Medicine For Allergy")) {
-            //            medtable.setBackground(Color.red);
-            //            System.out.println("Allergy Medicine");
-            //        }
+                Object selected = Category.getSelectedItem();
+                if (selected.equals("Medicine For Cough")) {
+                    medtable.setBackground(Color.gray);
+                    System.out.println("Cough Medicine");
+                } else if (selected.equals("Medicine For Headache")) {
+                    medtable.setBackground(Color.pink);
+                    System.out.println("Headache Medicine");
+                } else if (selected.equals("Medicine For Pain Reliever")) {
+                    medtable.setBackground(Color.pink);
+                    System.out.println("Pain Reliever Medicine");
+                } else if (selected.equals("Medicine For Allergy")) {
+                    medtable.setBackground(Color.red);
+                    System.out.println("Allergy Medicine");
+                }
     }//GEN-LAST:event_CategoryActionPerformed
+
+    private void ViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewMouseClicked
+        // TODO add your handling code here:
+        CoughPhar cough = new CoughPhar();
+        cough.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_ViewMouseClicked
+
+    private void logout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout1MouseClicked
+        // TODO add your handling code here:
+        firstpage log = new firstpage();
+        log.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logout1MouseClicked
+
+    private void AddmedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddmedActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_AddmedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,30 +385,30 @@ public class NextPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NextPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NextPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NextPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NextPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NextPage().setVisible(true);
+                new ViewMed().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Addmed;
     private javax.swing.JComboBox<String> Category;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton View;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -375,6 +421,7 @@ public class NextPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton logout1;
     private javax.swing.JTable medtable;
     private javax.swing.JTable medtable1;
     private javax.swing.JTable medtable2;

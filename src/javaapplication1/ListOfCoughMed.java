@@ -67,9 +67,9 @@ public class ListOfCoughMed {
         coughMeds.add(new CoughMedicine(101, "Carbocisteine + Zinc", 42.50, 30,
                 "BRAND NAME:Solmux Advance; GENERIC NAME:Carbocisteine + Zinc; USES:for cough"));
         coughMeds.add(new CoughMedicine(102, "Ambroxol HCI", 32.75, 30,
-                "BRAND NAME:Expel OD; GENERIC NAME:Ambroxol HCI; USES:for cough"));
+                "BRAND NAME:Expel OD; GENERIC NAME:Ambroxol HCI; USES:for asthma"));
         coughMeds.add(new CoughMedicine(103, "Dextromethorphan HBr Phenylpropanolamine HCI Paracetamol", 9.75, 30,
-                "BRAND NAME:Tuseran Forte; GENERIC NAME:Dextromethorphan HBr Phenylpropanolamine HCI Paracetamol; USES:for cough"));
+                "BRAND NAME:Tuseran Forte; GENERIC NAME:Dextromethorphan HBr Phenylpropanolamine HCI Paracetamol; USES:for cough and fever"));
     }
 
     public void displayMed(int Id) {

@@ -240,7 +240,7 @@ public class Login extends javax.swing.JFrame {
 
     private void LoginbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginbuttonMouseClicked
         // TODO add your handling code here:
-        NextPage next = new NextPage();
+        ViewMed next = new ViewMed();
         Loginbutton.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_LoginbuttonMouseClicked
