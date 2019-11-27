@@ -6,6 +6,8 @@
 package Jframe;
 
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +15,18 @@ import javax.swing.JOptionPane;
  * @author toringje_sd2022
  */
 public class Register extends javax.swing.JFrame {
+//    static ArrayList name = new ArrayList();
+//    static ArrayList emails = new ArrayList();
+//    static ArrayList pass = new ArrayList();
+//    static ArrayList ag = new ArrayList();
 
     /**
      * Creates new form Register
      */
     public Register() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -211,35 +219,32 @@ public class Register extends javax.swing.JFrame {
 
     private void registerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbuttonActionPerformed
         // TODO add your handling code here:
-        if (username.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Username");
-        } else if (password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Password");
 
-        } else if (age.equals("")) {
-            JOptionPane.showMessageDialog(null, "Add A Age");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection register = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
+            String query = "INSERT INTO Register(`username`, `age`, `email`, `password`)" + " VALUES (?,?,?,?)";
+            PreparedStatement stmt = register.prepareStatement(query);
+            stmt.setString(1, username.getText());
+            stmt.setString(2, age.getText());
+            stmt.setString(3, email.getText());
+            stmt.setString(4, String.valueOf(password.getPassword()));
 
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection register = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
-                String query = "INSERT INTO Register(`username`, `age`, `email`, `password`)" + " VALUES (?,?,?,?)";
-                PreparedStatement stmt = register.prepareStatement(query);
-                stmt.setString(1, username.getText());
-                stmt.setString(2, age.getText());
-                stmt.setString(3, email.getText());
-                stmt.setString(4, String.valueOf(password.getPassword()));
+            stmt.execute();
 
-                stmt.execute();
+            register.close();
 
-//            ResultSet rs = stmt.executeQuery("select * from emp");
-//            while (rs.next()) {
-//                System.out.println(rs.getString(1) + "  " + rs.getInt(2) + "  " + rs.getString(3) + " " + rs.getString(4));
-//            }
-//            register.close();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+        } catch (Exception e) {
+            System.err.println("Got an exception");
+            System.err.println(e.getMessage());
         }
+
+        Login user = new Login();
+        user.pack();
+        user.setLocationRelativeTo(null);
+        user.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        user.setVisible(true);
+        this.dispose();
 
 
     }//GEN-LAST:event_registerbuttonActionPerformed

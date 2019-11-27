@@ -213,7 +213,11 @@ public class CoughPhar extends javax.swing.JFrame {
             cough.setVisible(true);
             this.setVisible(false);
         } else if (selected.equals("Medicine For Headache")) {
-            System.out.println("Headache Medicine");
+            HeadPhar head = new HeadPhar();
+            head.setVisible(true);
+            this.setVisible(false);
+            
+          
         } else if (selected.equals("Medicine For Pain Reliever")) {
             System.out.println("Pain Reliever Medicine");
         } else if (selected.equals("Medicine For Allergy")) {

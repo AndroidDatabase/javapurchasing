@@ -28,8 +28,8 @@ public class firstpage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        pharbutton = new javax.swing.JButton();
+        cusbutton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,29 +38,29 @@ public class firstpage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
         jPanel1.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("LOGIN AS PHARMACIST");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pharbutton.setBackground(new java.awt.Color(51, 51, 255));
+        pharbutton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pharbutton.setForeground(new java.awt.Color(255, 255, 255));
+        pharbutton.setText("LOGIN AS PHARMACIST");
+        pharbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                pharbuttonMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(90, 160, 230, 80);
+        jPanel1.add(pharbutton);
+        pharbutton.setBounds(90, 160, 230, 80);
 
-        jButton2.setBackground(new java.awt.Color(51, 51, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("LOGIN AS CUSTOMER");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        cusbutton.setBackground(new java.awt.Color(51, 51, 255));
+        cusbutton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cusbutton.setForeground(new java.awt.Color(255, 255, 255));
+        cusbutton.setText("LOGIN AS CUSTOMER");
+        cusbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                cusbuttonMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(360, 160, 230, 80);
+        jPanel1.add(cusbutton);
+        cusbutton.setBounds(360, 160, 230, 80);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\toringje_sd2022\\Downloads\\medicine.jpg")); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1000, 600));
@@ -82,20 +82,23 @@ public class firstpage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void pharbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pharbuttonMouseClicked
         // TODO add your handling code here:
+        
+      
         Login a = new Login();
         a.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_pharbuttonMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void cusbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cusbuttonMouseClicked
         // TODO add your handling code here:
         Login b = new Login();
         b.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
+        
 
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_cusbuttonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -133,9 +136,9 @@ public class firstpage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cusbutton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton pharbutton;
     // End of variables declaration//GEN-END:variables
 }

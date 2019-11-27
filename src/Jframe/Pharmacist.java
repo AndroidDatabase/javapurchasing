@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author 2ndyrGroupB
  */
-public class ViewMed extends javax.swing.JFrame {
+public class Pharmacist extends javax.swing.JFrame {
 
     /**
      * Creates new form NextPage
      */
-    public ViewMed() {
+    public Pharmacist() {
         initComponents();
     }
 
@@ -97,6 +97,11 @@ public class ViewMed extends javax.swing.JFrame {
         View.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ViewMouseClicked(evt);
+            }
+        });
+        View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewActionPerformed(evt);
             }
         });
 
@@ -368,6 +373,22 @@ public class ViewMed extends javax.swing.JFrame {
         
     }//GEN-LAST:event_AddmedActionPerformed
 
+    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
+        // TODO add your handling code here:
+          Object selected = Category.getSelectedItem();
+        if (selected.equals("Medicine For Cough")) {
+            CoughPhar cough = new CoughPhar();
+            cough.setVisible(true);
+            this.setVisible(false);
+        } else if (selected.equals("Medicine For Headache")) {
+            System.out.println("Headache Medicine");
+        } else if (selected.equals("Medicine For Pain Reliever")) {
+            System.out.println("Pain Reliever Medicine");
+        } else if (selected.equals("Medicine For Allergy")) {
+            System.out.println("Allergy Medicine");
+        }
+    }//GEN-LAST:event_ViewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -385,21 +406,23 @@ public class ViewMed extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewMed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewMed().setVisible(true);
+                new Pharmacist().setVisible(true);
             }
         });
     }
