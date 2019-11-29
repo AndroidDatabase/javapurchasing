@@ -228,6 +228,7 @@ public class Login extends javax.swing.JFrame {
     private void LoginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbuttonActionPerformed
         // TODO add your handling code here:
         try{
+             Class.forName("com.mysql.jdbc.Driver");
              String query = "SELECT * FROM `multiuser login` WHERE username=? and password =? and usertype=?";
              con=  DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
              pst = con.prepareStatement(query);

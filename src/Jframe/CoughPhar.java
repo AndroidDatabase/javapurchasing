@@ -5,6 +5,9 @@
  */
 package Jframe;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author toringje_sd2022
@@ -34,8 +37,8 @@ public class CoughPhar extends javax.swing.JFrame {
         Category = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         Viewbutton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        AddMed = new javax.swing.JButton();
+        DeleteMed = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         medtable = new javax.swing.JTable();
@@ -89,13 +92,18 @@ public class CoughPhar extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("ADD MEDICINE");
+        AddMed.setBackground(new java.awt.Color(255, 204, 204));
+        AddMed.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AddMed.setText("ADD MEDICINE");
+        AddMed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMedMouseClicked(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 204));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("DELETE MEDICINE");
+        DeleteMed.setBackground(new java.awt.Color(255, 204, 204));
+        DeleteMed.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        DeleteMed.setText("DELETE MEDICINE");
 
         logout.setBackground(new java.awt.Color(255, 204, 204));
         logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -114,8 +122,8 @@ public class CoughPhar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Viewbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DeleteMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -125,9 +133,9 @@ public class CoughPhar extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(Viewbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddMed, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DeleteMed, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(301, Short.MAX_VALUE))
@@ -138,18 +146,22 @@ public class CoughPhar extends javax.swing.JFrame {
         medtable.setBackground(new java.awt.Color(153, 153, 255));
         medtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc"},
-                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI"},
-                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc", null},
+                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI", null},
+                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME"
+                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane1.setViewportView(medtable);
+        if (medtable.getColumnModel().getColumnCount() > 0) {
+            medtable.getColumnModel().getColumn(5).setResizable(false);
+            medtable.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,22 +219,7 @@ public class CoughPhar extends javax.swing.JFrame {
     private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
         // TODO add your handling code here:
         
-        Object selected = Category.getSelectedItem();
-        if (selected.equals("Medicine For Cough")) {
-            CoughPhar cough = new CoughPhar();
-            cough.setVisible(true);
-            this.setVisible(false);
-        } else if (selected.equals("Medicine For Headache")) {
-            HeadPhar head = new HeadPhar();
-            head.setVisible(true);
-            this.setVisible(false);
-            
-          
-        } else if (selected.equals("Medicine For Pain Reliever")) {
-            System.out.println("Pain Reliever Medicine");
-        } else if (selected.equals("Medicine For Allergy")) {
-            System.out.println("Allergy Medicine");
-        }
+      
     }//GEN-LAST:event_CategoryActionPerformed
 
     private void ViewbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewbuttonMouseClicked
@@ -236,6 +233,26 @@ public class CoughPhar extends javax.swing.JFrame {
         page.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_logoutMouseClicked
+
+    private void AddMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMedMouseClicked
+        // TODO add your handling code here:
+//        Object[] row = new Object[6];
+//        AddMed.addActionListener(new ActionListener(){
+//            
+//            
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                
+//                
+//               
+//            }
+//            
+//        
+//        }
+//                
+        
+        
+    }//GEN-LAST:event_AddMedMouseClicked
 
     /**
      * @param args the command line arguments
@@ -274,10 +291,10 @@ public class CoughPhar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddMed;
     private javax.swing.JComboBox<String> Category;
+    private javax.swing.JButton DeleteMed;
     private javax.swing.JButton Viewbutton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

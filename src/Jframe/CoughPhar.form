@@ -185,8 +185,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Viewbutton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="AddMed" alignment="0" max="32767" attributes="0"/>
+                          <Component id="DeleteMed" alignment="0" max="32767" attributes="0"/>
                           <Component id="logout" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -199,9 +199,9 @@
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="Viewbutton" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="AddMed" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="DeleteMed" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="logout" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace pref="301" max="32767" attributes="0"/>
@@ -224,7 +224,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ViewbuttonMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="AddMed">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -234,8 +234,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="ADD MEDICINE"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddMedMouseClicked"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="DeleteMed">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -282,7 +285,7 @@
                   <Color blue="ff" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="6">
+                  <Table columnCount="7" rowCount="6">
                     <Column editable="true" title="MEDICINE ID" type="java.lang.Object">
                       <Data value="   101"/>
                       <Data value="   102"/>
@@ -331,6 +334,7 @@
                       <Data value="null"/>
                       <Data value="null"/>
                     </Column>
+                    <Column editable="true" title="DESCRIPTION" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -360,7 +364,12 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>

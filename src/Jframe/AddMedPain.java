@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author toringje_sd2022
  */
-public class AddHead extends javax.swing.JFrame {
+public class AddMedPain extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddHead
+     * Creates new form AddMedPain
      */
-    public AddHead() {
+    public AddMedPain() {
         initComponents();
     }
 
@@ -34,27 +34,27 @@ public class AddHead extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        medname3 = new javax.swing.JTextField();
+        medname2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        price3 = new javax.swing.JTextField();
+        price2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        quan3 = new javax.swing.JTextField();
+        quan2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        brand3 = new javax.swing.JTextField();
+        brand2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        gener3 = new javax.swing.JTextField();
+        gener2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        desc3 = new javax.swing.JTextField();
-        AddButton3 = new javax.swing.JButton();
+        desc2 = new javax.swing.JTextField();
+        AddButton2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        medID3 = new javax.swing.JTextField();
-        removebutton3 = new javax.swing.JButton();
-        Viewbutton3 = new javax.swing.JButton();
+        medID2 = new javax.swing.JTextField();
+        removebutton2 = new javax.swing.JButton();
+        Viewbutton2 = new javax.swing.JButton();
         combo2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        medtable3 = new javax.swing.JTable();
+        medtable2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,87 +87,87 @@ public class AddHead extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Medicine Price: ");
 
-        medname3.addActionListener(new java.awt.event.ActionListener() {
+        medname2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medname3ActionPerformed(evt);
+                medname2ActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Medicine Name: ");
 
-        price3.addActionListener(new java.awt.event.ActionListener() {
+        price2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                price3ActionPerformed(evt);
+                price2ActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Medicine Quantity: ");
 
-        quan3.addActionListener(new java.awt.event.ActionListener() {
+        quan2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quan3ActionPerformed(evt);
+                quan2ActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Medicine BrandName: ");
 
-        brand3.addActionListener(new java.awt.event.ActionListener() {
+        brand2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brand3ActionPerformed(evt);
+                brand2ActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Medicine GenericName: ");
 
-        gener3.addActionListener(new java.awt.event.ActionListener() {
+        gener2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gener3ActionPerformed(evt);
+                gener2ActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Medicine Use: ");
 
-        desc3.addActionListener(new java.awt.event.ActionListener() {
+        desc2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desc3ActionPerformed(evt);
+                desc2ActionPerformed(evt);
             }
         });
 
-        AddButton3.setBackground(new java.awt.Color(255, 204, 204));
-        AddButton3.setText("ADD");
-        AddButton3.addActionListener(new java.awt.event.ActionListener() {
+        AddButton2.setBackground(new java.awt.Color(255, 204, 204));
+        AddButton2.setText("ADD");
+        AddButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButton3ActionPerformed(evt);
+                AddButton2ActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Medicine ID: ");
 
-        medID3.addActionListener(new java.awt.event.ActionListener() {
+        medID2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medID3ActionPerformed(evt);
+                medID2ActionPerformed(evt);
             }
         });
 
-        removebutton3.setBackground(new java.awt.Color(255, 204, 204));
-        removebutton3.setText("REMOVE");
-        removebutton3.addActionListener(new java.awt.event.ActionListener() {
+        removebutton2.setBackground(new java.awt.Color(255, 204, 204));
+        removebutton2.setText("REMOVE");
+        removebutton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removebutton3ActionPerformed(evt);
+                removebutton2ActionPerformed(evt);
             }
         });
 
-        Viewbutton3.setBackground(new java.awt.Color(255, 204, 204));
-        Viewbutton3.setText("VIEW");
-        Viewbutton3.addActionListener(new java.awt.event.ActionListener() {
+        Viewbutton2.setBackground(new java.awt.Color(255, 204, 204));
+        Viewbutton2.setText("VIEW");
+        Viewbutton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Viewbutton3ActionPerformed(evt);
+                Viewbutton2ActionPerformed(evt);
             }
         });
 
@@ -190,28 +190,28 @@ public class AddHead extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(medname3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(price3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(quan3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(medname2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(price2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quan2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(desc3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gener3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(brand3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(desc2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gener2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(brand2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(83, 83, 83)
-                                .addComponent(medID3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(medID2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(AddButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
-                                .addComponent(removebutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(removebutton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
-                                .addComponent(Viewbutton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Viewbutton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 6, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -220,36 +220,36 @@ public class AddHead extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(medID3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(medID2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(medname3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medname2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(price3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(price2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quan3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quan2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(brand3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brand2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gener3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gener2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(desc3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(desc2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(removebutton3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(Viewbutton3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                    .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(removebutton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(Viewbutton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
         );
 
@@ -283,8 +283,8 @@ public class AddHead extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable3.setBackground(new java.awt.Color(153, 153, 255));
-        medtable3.setModel(new javax.swing.table.DefaultTableModel(
+        medtable2.setBackground(new java.awt.Color(153, 153, 255));
+        medtable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -292,11 +292,11 @@ public class AddHead extends javax.swing.JFrame {
                 "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane2.setViewportView(medtable3);
+        jScrollPane2.setViewportView(medtable2);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("HEADACHE MEDICINE");
+        jLabel11.setText("PAINRELIEVER MEDICINE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -312,11 +312,11 @@ public class AddHead extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(237, 237, 237))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,9 +331,9 @@ public class AddHead extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel11)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -352,53 +352,53 @@ public class AddHead extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void medname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medname3ActionPerformed
+    private void medname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medname2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_medname3ActionPerformed
+    }//GEN-LAST:event_medname2ActionPerformed
 
-    private void price3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_price3ActionPerformed
+    private void price2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_price2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_price3ActionPerformed
+    }//GEN-LAST:event_price2ActionPerformed
 
-    private void quan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quan3ActionPerformed
+    private void quan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quan2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quan3ActionPerformed
+    }//GEN-LAST:event_quan2ActionPerformed
 
-    private void brand3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brand3ActionPerformed
+    private void brand2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brand2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_brand3ActionPerformed
+    }//GEN-LAST:event_brand2ActionPerformed
 
-    private void gener3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gener3ActionPerformed
+    private void gener2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gener2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_gener3ActionPerformed
+    }//GEN-LAST:event_gener2ActionPerformed
 
-    private void desc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc3ActionPerformed
+    private void desc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_desc3ActionPerformed
+    }//GEN-LAST:event_desc2ActionPerformed
 
-    private void AddButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton3ActionPerformed
+    private void AddButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton2ActionPerformed
         // TODO add your handling code here:
 
-        DefaultTableModel model =(DefaultTableModel) medtable3.getModel();
-        model.addRow(new Object[] {medID3.getText(), medname3.getText(),
-            price3.getText(), quan3.getText(), brand3.getText(), gener3.getText(), desc3.getText()
+        DefaultTableModel model =(DefaultTableModel) medtable2.getModel();
+        model.addRow(new Object[] {medID2.getText(), medname2.getText(),
+            price2.getText(), quan2.getText(), brand2.getText(), gener2.getText(), desc2.getText()
         });
-    }//GEN-LAST:event_AddButton3ActionPerformed
+    }//GEN-LAST:event_AddButton2ActionPerformed
 
-    private void medID3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID3ActionPerformed
+    private void medID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_medID3ActionPerformed
+    }//GEN-LAST:event_medID2ActionPerformed
 
-    private void removebutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton3ActionPerformed
+    private void removebutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_removebutton3ActionPerformed
+    }//GEN-LAST:event_removebutton2ActionPerformed
 
-    private void Viewbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton3ActionPerformed
+    private void Viewbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton2ActionPerformed
         // TODO add your handling code here:
         Pharmacist p = new Pharmacist();
         p.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_Viewbutton3ActionPerformed
+    }//GEN-LAST:event_Viewbutton2ActionPerformed
 
     private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
         // TODO add your handling code here:
@@ -421,31 +421,31 @@ public class AddHead extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddHead.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMedPain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddHead.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMedPain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddHead.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMedPain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddHead.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMedPain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddHead().setVisible(true);
+                new AddMedPain().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddButton3;
-    private javax.swing.JButton Viewbutton3;
-    private javax.swing.JTextField brand3;
+    private javax.swing.JButton AddButton2;
+    private javax.swing.JButton Viewbutton2;
+    private javax.swing.JTextField brand2;
     private javax.swing.JComboBox<String> combo2;
-    private javax.swing.JTextField desc3;
-    private javax.swing.JTextField gener3;
+    private javax.swing.JTextField desc2;
+    private javax.swing.JTextField gener2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -461,11 +461,11 @@ public class AddHead extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField medID3;
-    private javax.swing.JTextField medname3;
-    private javax.swing.JTable medtable3;
-    private javax.swing.JTextField price3;
-    private javax.swing.JTextField quan3;
-    private javax.swing.JButton removebutton3;
+    private javax.swing.JTextField medID2;
+    private javax.swing.JTextField medname2;
+    private javax.swing.JTable medtable2;
+    private javax.swing.JTextField price2;
+    private javax.swing.JTextField quan2;
+    private javax.swing.JButton removebutton2;
     // End of variables declaration//GEN-END:variables
 }
