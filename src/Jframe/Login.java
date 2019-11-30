@@ -229,15 +229,15 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
              Class.forName("com.mysql.jdbc.Driver");
-             String query = "SELECT * FROM `multiuser login` WHERE username=? and password =? and usertype=?";
+             String query = "SELECT * FROM `register` WHERE `username`='"+usertext.getText()+"' and `password` ='"+String.valueOf(passwordtext.getPassword())+"' and `user`='"+String.valueOf(usertype.getSelectedItem())+"'";
              con=  DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
              pst = con.prepareStatement(query);
-             pst.setString(1,usertext.getText());
-             pst.setString(2,passwordtext.getText());
-             pst.setString(3,String.valueOf(usertype.getSelectedItem()));
-             rs=pst.executeQuery();
+//             pst.setString(1,usertext.getText());
+//             pst.setString(2,String.valueOf(passwordtext.getPassword()));
+//             pst.setString(3,String.valueOf(usertype.getSelectedItem()));
+             rs=pst.executeQuery(query);
              if(rs.next()){
-                 JOptionPane.showMessageDialog(this, "username and password matched and you are logined as" +rs.getString("usertype"));
+                 JOptionPane.showMessageDialog(this, "You are now logged in!");
                  if(usertype.getSelectedIndex()==0){
                      Pharmacist a = new Pharmacist();
                      a.setVisible(true);
@@ -248,36 +248,11 @@ public class Login extends javax.swing.JFrame {
                      this.setVisible(false);
                  }
              }else{
-                    JOptionPane.showMessageDialog(this, "username and password do not matched");
+                    JOptionPane.showMessageDialog(this, "Username, Password and User do not matched");
              }
-
-            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        
-       
-        
-//        String user = usertextfield.getText();
-//        String password = passwordfield.getText();
-//
-//        System.out.println(user);
-//        System.out.println(password);
-//
-//        if (user.equals("jess") && password.equals("melvin")) {
-//            Cough page = new Cough();
-//            page.setVisible(true);
-//            JLabel label = new JLabel("Welcome:" + user);
-//            page.getContentPane().add(label);
-//        } else if (user.equals("") || password.equals("")) {
-//            JOptionPane.showMessageDialog(this, "Enter the valid username and password",
-//                    "Error", JOptionPane.ERROR_MESSAGE);
-////                    
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Incorrect login or password",
-//                    "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//
 
     }//GEN-LAST:event_LoginbuttonActionPerformed
 

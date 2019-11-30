@@ -5,83 +5,19 @@
  */
 package Jframe;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author toringje_sd2022
+ * @author 2ndyrGroupB
  */
 public class AddMedCough extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddMed
+     * Creates new form AddMedCough
      */
     public AddMedCough() {
         initComponents();
-        Show_Users_In_JTable();
-    }
-
-    public Connection getConnection() {
-
-        Connection con;
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
-            return con;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public ArrayList<Medicine> medicinesList() {
-        ArrayList<Medicine> medicinesList = new ArrayList<Medicine>();
-        Connection connection = getConnection();
-
-        String query = "SELECT * FROM `medicine`";
-        Statement st;
-        ResultSet rs;
-
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery(query);
-            Medicine medicine;
-            while (rs.next()) {
-                medicine = new Medicine(rs.getInt("medId"), rs.getString("medname"), rs.getDouble("price"), rs.getInt("quantity"), rs.getString("brandname"), rs.getString("generic"), rs.getString("description"));
-                medicinesList.add(medicine);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return medicinesList;
-    }
-
-    //Display Data in JTable
-    public void Show_Users_In_JTable() {
-
-        ArrayList<Medicine> list = getMedicinesList();
-        DefaultTableModel model = (DefaultTableModel) medtable1.getModel();
-        Object[] row = new Object[7];
-        for (int i = 0; i < list.size(); i++) {
-            row[0] = list.get(i).getMedId();
-            row[1] = list.get(i).getMedname();
-            row[2] = list.get(i).getPrice();
-            row[3] = list.get(i).getQuan();
-            row[4] = list.get(i).getBrand();
-            row[5] = list.get(i).getGener();
-            row[6] = list.get(i).getDesc();
-            
-            model.addRow(row);
-
-        }
-
     }
 
     /**
@@ -93,78 +29,33 @@ public class AddMedCough extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        medtable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        medname = new javax.swing.JTextField();
+        medname1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        price = new javax.swing.JTextField();
+        price1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        quan = new javax.swing.JTextField();
+        quan1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        brand = new javax.swing.JTextField();
+        brand1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        gener = new javax.swing.JTextField();
+        gener1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        desc = new javax.swing.JTextField();
-        AddButton = new javax.swing.JButton();
+        desc1 = new javax.swing.JTextField();
+        AddButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        medID = new javax.swing.JTextField();
-        removebutton = new javax.swing.JButton();
-        Viewbutton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        medID1 = new javax.swing.JTextField();
+        removebutton1 = new javax.swing.JButton();
+        Viewbutton1 = new javax.swing.JButton();
+        combo2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        medtable1 = new javax.swing.JTable();
+        medtable2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
-
-        jPanel2.setBackground(new java.awt.Color(0, 204, 102));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("                                                                   JESSMEL PHARMACY");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        jLabel5.setText("jLabel5");
-
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        medtable.setBackground(new java.awt.Color(153, 153, 255));
-        medtable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc", "Use for cough"},
-                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI", "Use for asthma"},
-                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", "Use for cough and fever"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
-            }
-        ));
-        jScrollPane1.setViewportView(medtable);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,87 +87,87 @@ public class AddMedCough extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Medicine Price: ");
 
-        medname.addActionListener(new java.awt.event.ActionListener() {
+        medname1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mednameActionPerformed(evt);
+                medname1ActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Medicine Name: ");
 
-        price.addActionListener(new java.awt.event.ActionListener() {
+        price1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceActionPerformed(evt);
+                price1ActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Medicine Quantity: ");
 
-        quan.addActionListener(new java.awt.event.ActionListener() {
+        quan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quanActionPerformed(evt);
+                quan1ActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Medicine BrandName: ");
 
-        brand.addActionListener(new java.awt.event.ActionListener() {
+        brand1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandActionPerformed(evt);
+                brand1ActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Medicine GenericName: ");
 
-        gener.addActionListener(new java.awt.event.ActionListener() {
+        gener1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generActionPerformed(evt);
+                gener1ActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Medicine Use: ");
 
-        desc.addActionListener(new java.awt.event.ActionListener() {
+        desc1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descActionPerformed(evt);
+                desc1ActionPerformed(evt);
             }
         });
 
-        AddButton.setBackground(new java.awt.Color(255, 204, 204));
-        AddButton.setText("ADD");
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
+        AddButton1.setBackground(new java.awt.Color(255, 204, 204));
+        AddButton1.setText("ADD");
+        AddButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
+                AddButton1ActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Medicine ID: ");
 
-        medID.addActionListener(new java.awt.event.ActionListener() {
+        medID1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medIDActionPerformed(evt);
+                medID1ActionPerformed(evt);
             }
         });
 
-        removebutton.setBackground(new java.awt.Color(255, 204, 204));
-        removebutton.setText("REMOVE");
-        removebutton.addActionListener(new java.awt.event.ActionListener() {
+        removebutton1.setBackground(new java.awt.Color(255, 204, 204));
+        removebutton1.setText("REMOVE");
+        removebutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removebuttonActionPerformed(evt);
+                removebutton1ActionPerformed(evt);
             }
         });
 
-        Viewbutton.setBackground(new java.awt.Color(255, 204, 204));
-        Viewbutton.setText("VIEW");
-        Viewbutton.addActionListener(new java.awt.event.ActionListener() {
+        Viewbutton1.setBackground(new java.awt.Color(255, 204, 204));
+        Viewbutton1.setText("VIEW");
+        Viewbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewbuttonActionPerformed(evt);
+                Viewbutton1ActionPerformed(evt);
             }
         });
 
@@ -299,28 +190,28 @@ public class AddMedCough extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(medname, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(quan, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(medname1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(price1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quan1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gener, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gener1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(brand1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(83, 83, 83)
-                                .addComponent(medID, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(medID1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AddButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
-                                .addComponent(removebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(removebutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
-                                .addComponent(Viewbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Viewbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 6, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -329,43 +220,43 @@ public class AddMedCough extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(medID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(medID1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(medname, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medname1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(price1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quan1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brand1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gener, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gener1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(removebutton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(Viewbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                    .addComponent(AddButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(removebutton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(Viewbutton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
+        combo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                combo2ActionPerformed(evt);
             }
         });
 
@@ -392,8 +283,8 @@ public class AddMedCough extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable1.setBackground(new java.awt.Color(153, 153, 255));
-        medtable1.setModel(new javax.swing.table.DefaultTableModel(
+        medtable2.setBackground(new java.awt.Color(153, 153, 255));
+        medtable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -401,11 +292,11 @@ public class AddMedCough extends javax.swing.JFrame {
                 "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane2.setViewportView(medtable1);
+        jScrollPane2.setViewportView(medtable2);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("COUGH MEDICINES");
+        jLabel11.setText("       COUGH MEDICINE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -418,17 +309,14 @@ public class AddMedCough extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addComponent(jScrollPane2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(249, 249, 249))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +324,7 @@ public class AddMedCough extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -464,57 +352,57 @@ public class AddMedCough extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mednameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mednameActionPerformed
+    private void medname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medname1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mednameActionPerformed
+    }//GEN-LAST:event_medname1ActionPerformed
 
-    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
+    private void price1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_price1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_priceActionPerformed
+    }//GEN-LAST:event_price1ActionPerformed
 
-    private void quanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quanActionPerformed
+    private void quan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quan1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quanActionPerformed
+    }//GEN-LAST:event_quan1ActionPerformed
 
-    private void brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandActionPerformed
+    private void brand1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brand1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_brandActionPerformed
+    }//GEN-LAST:event_brand1ActionPerformed
 
-    private void generActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generActionPerformed
+    private void gener1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gener1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_generActionPerformed
+    }//GEN-LAST:event_gener1ActionPerformed
 
-    private void descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descActionPerformed
+    private void desc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_descActionPerformed
+    }//GEN-LAST:event_desc1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+    private void AddButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton1ActionPerformed
         // TODO add your handling code here:
 
-        DefaultTableModel model = (DefaultTableModel) medtable1.getModel();
-        model.addRow(new Object[]{medID.getText(), medname.getText(),
-            price.getText(), quan.getText(), brand.getText(), gener.getText(), desc.getText()
+        DefaultTableModel model =(DefaultTableModel) medtable2.getModel();
+        model.addRow(new Object[] {medID1.getText(), medname1.getText(),
+            price1.getText(), quan1.getText(), brand1.getText(), gener1.getText(), desc1.getText()
         });
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }//GEN-LAST:event_AddButton1ActionPerformed
 
-    private void medIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medIDActionPerformed
+    private void medID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_medIDActionPerformed
+    }//GEN-LAST:event_medID1ActionPerformed
 
-    private void removebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebuttonActionPerformed
+    private void removebutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_removebuttonActionPerformed
+    }//GEN-LAST:event_removebutton1ActionPerformed
 
-    private void ViewbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewbuttonActionPerformed
+    private void Viewbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton1ActionPerformed
         // TODO add your handling code here:
         Pharmacist p = new Pharmacist();
         p.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_ViewbuttonActionPerformed
+    }//GEN-LAST:event_Viewbutton1ActionPerformed
+
+    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -542,9 +430,6 @@ public class AddMedCough extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AddMedCough.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -555,41 +440,32 @@ public class AddMedCough extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddButton;
-    private javax.swing.JButton Viewbutton;
-    private javax.swing.JTextField brand;
-    private javax.swing.JTextField desc;
-    private javax.swing.JTextField gener;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton AddButton1;
+    private javax.swing.JButton Viewbutton1;
+    private javax.swing.JTextField brand1;
+    private javax.swing.JComboBox<String> combo2;
+    private javax.swing.JTextField desc1;
+    private javax.swing.JTextField gener1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField medID;
-    private javax.swing.JTextField medname;
-    private javax.swing.JTable medtable;
-    private javax.swing.JTable medtable1;
-    private javax.swing.JTextField price;
-    private javax.swing.JTextField quan;
-    private javax.swing.JButton removebutton;
+    private javax.swing.JTextField medID1;
+    private javax.swing.JTextField medname1;
+    private javax.swing.JTable medtable2;
+    private javax.swing.JTextField price1;
+    private javax.swing.JTextField quan1;
+    private javax.swing.JButton removebutton1;
     // End of variables declaration//GEN-END:variables
-
-    private ArrayList<Medicine> getMedicinesList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

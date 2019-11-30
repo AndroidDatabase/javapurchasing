@@ -33,10 +33,12 @@ public class PainPhar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Category = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
+        allergybutton = new javax.swing.JButton();
+        painbutton = new javax.swing.JButton();
+        headbutton = new javax.swing.JButton();
+        coughbutton = new javax.swing.JButton();
+        coughbutton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         medtable = new javax.swing.JTable();
 
@@ -80,21 +82,74 @@ public class PainPhar extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("VIEW MEDICINE");
+        logout.setBackground(new java.awt.Color(255, 204, 204));
+        logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        logout.setText("LOGOUT");
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("ADD MEDICINE");
+        allergybutton.setBackground(new java.awt.Color(255, 204, 204));
+        allergybutton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        allergybutton.setText("ALLERGY MEDICINE");
+        allergybutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                allergybuttonMouseClicked(evt);
+            }
+        });
+        allergybutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allergybuttonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 204));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("DELETE MEDICINE");
+        painbutton.setBackground(new java.awt.Color(255, 204, 204));
+        painbutton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        painbutton.setText("PAINRELIEVER MEDICINE");
 
-        jButton4.setBackground(new java.awt.Color(255, 204, 204));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("LOGOUT");
+        headbutton.setBackground(new java.awt.Color(255, 204, 204));
+        headbutton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        headbutton.setText("HEADACHE MEDICINE");
+        headbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                headbuttonActionPerformed(evt);
+            }
+        });
+
+        coughbutton.setBackground(new java.awt.Color(255, 204, 204));
+        coughbutton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        coughbutton.setText("COUGH MEDICINE");
+        coughbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coughbuttonMouseClicked(evt);
+            }
+        });
+        coughbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coughbuttonActionPerformed(evt);
+            }
+        });
+
+        coughbutton1.setBackground(new java.awt.Color(255, 204, 204));
+        coughbutton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        coughbutton1.setText("VIEW ALL MEDICINES");
+        coughbutton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coughbutton1MouseClicked(evt);
+            }
+        });
+        coughbutton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                coughbutton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -103,24 +158,30 @@ public class PainPhar extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(coughbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(headbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(allergybutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(coughbutton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(coughbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(coughbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(headbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(painbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(allergybutton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -210,6 +271,61 @@ public class PainPhar extends javax.swing.JFrame {
             //        }
     }//GEN-LAST:event_CategoryActionPerformed
 
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        // TODO add your handling code here:
+        Login a = new Login();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logoutActionPerformed
+
+    private void allergybuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allergybuttonMouseClicked
+        // TODO add your handling code here:
+        firstpage log = new firstpage();
+        log.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_allergybuttonMouseClicked
+
+    private void allergybuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allergybuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_allergybuttonActionPerformed
+
+    private void headbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headbuttonActionPerformed
+        // TODO add your handling code here:
+        AddMedCough med = new AddMedCough();
+        med.setVisible(true);
+        this.setVisible(false);
+
+        //        med.pack();
+        //        med.setLocationRelativeTo(null);
+        //        med.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_headbuttonActionPerformed
+
+    private void coughbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coughbuttonMouseClicked
+        // TODO add your handling code here:
+        CoughPhar cough = new CoughPhar();
+        cough.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_coughbuttonMouseClicked
+
+    private void coughbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coughbuttonActionPerformed
+        // TODO add your handling code here:
+        AddMedCough med = new AddMedCough();
+        med.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_coughbuttonActionPerformed
+
+    private void coughbutton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coughbutton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coughbutton1MouseClicked
+
+    private void coughbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coughbutton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_coughbutton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,16 +363,18 @@ public class PainPhar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Category;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton allergybutton;
+    private javax.swing.JButton coughbutton;
+    private javax.swing.JButton coughbutton1;
+    private javax.swing.JButton headbutton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logout;
     private javax.swing.JTable medtable;
+    private javax.swing.JButton painbutton;
     // End of variables declaration//GEN-END:variables
 }

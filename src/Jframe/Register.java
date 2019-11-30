@@ -54,6 +54,8 @@ public class Register extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         signInlabel = new javax.swing.JLabel();
         age = new javax.swing.JTextField();
+        user_type = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,32 +123,44 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        user_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pharmacist", "Customer" }));
+        user_type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                user_typeActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("User Type:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registerbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(registerbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(user_type, 0, 203, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(signInlabel))
                         .addComponent(agelabel)
                         .addComponent(passwordlabel)
-                        .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addComponent(email)
                         .addComponent(usernamelabel)
                         .addComponent(username)
                         .addComponent(emailAdlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(password)
-                        .addComponent(age))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(signInlabel)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(age)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,13 +182,17 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(passwordlabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(user_type, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(registerbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(signInlabel))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(signInlabel)
+                    .addComponent(jLabel2))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -184,14 +202,11 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,28 +238,30 @@ public class Register extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection register = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
-            String query = "INSERT INTO Register(`username`, `age`, `email`, `password`)" + " VALUES (?,?,?,?)";
+            String query = "INSERT INTO Register(`username`, `age`, `email`, `password`, `user`)" + " VALUES (?,?,?,?, ?)";
             PreparedStatement stmt = register.prepareStatement(query);
             stmt.setString(1, username.getText());
             stmt.setString(2, age.getText());
             stmt.setString(3, email.getText());
             stmt.setString(4, String.valueOf(password.getPassword()));
+            stmt.setString(5, String.valueOf(user_type.getSelectedItem()));
 
             stmt.execute();
 
             register.close();
+            JOptionPane.showMessageDialog(this, "You are now registered!");
+            Login user = new Login();
+            user.pack();
+            user.setLocationRelativeTo(null);
+            user.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            user.setVisible(true);
+            this.dispose();
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Username or email already exist!");
             System.err.println("Got an exception");
             System.err.println(e.getMessage());
         }
-
-        Login user = new Login();
-        user.pack();
-        user.setLocationRelativeTo(null);
-        user.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        user.setVisible(true);
-        this.dispose();
 
 
     }//GEN-LAST:event_registerbuttonActionPerformed
@@ -255,6 +272,10 @@ public class Register extends javax.swing.JFrame {
         med.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerbuttonMouseClicked
+
+    private void user_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_typeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_user_typeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +306,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel emailAdlabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -292,6 +314,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel passwordlabel;
     private javax.swing.JButton registerbutton;
     private javax.swing.JLabel signInlabel;
+    private javax.swing.JComboBox<String> user_type;
     private javax.swing.JTextField username;
     private javax.swing.JLabel usernamelabel;
     // End of variables declaration//GEN-END:variables
