@@ -42,7 +42,7 @@ public class Pharmacist extends javax.swing.JFrame {
         allergybutton = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        medtable = new javax.swing.JTable();
+        cough_table = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         medtable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -193,12 +193,12 @@ public class Pharmacist extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable.setBackground(new java.awt.Color(153, 153, 255));
-        medtable.setModel(new javax.swing.table.DefaultTableModel(
+        cough_table.setBackground(new java.awt.Color(153, 153, 255));
+        cough_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc", "Use for cough"},
-                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI", "Use for asthma"},
-                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", "Use for cough and fever"},
+                {"   101", "Carbocisteine", "43", "30", "Solmux Advance", "Carbocisteine + Zinc", "Use for cough"},
+                {"   102", "Ambroxol", "33", "30", "Expel OD", "Ambroxol HCI", "Use for asthma"},
+                {"   103", "Paracetamol", "10	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", "Use for cough and fever"},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
@@ -207,32 +207,24 @@ public class Pharmacist extends javax.swing.JFrame {
                 "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane1.setViewportView(medtable);
+        jScrollPane1.setViewportView(cough_table);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         medtable1.setBackground(new java.awt.Color(153, 153, 255));
         medtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(201), "Biolfu",  new Double(6.0),  new Integer(30), "Bioflu Non-Drowsy", "Phenylephrine HCI Ibuprofen"},
-                { new Integer(202), "Rexidol",  new Double(6.0),  new Integer(30), "Rexidol Forte", "Paracetamol Caffeine"},
-                { new Integer(203), "Paracetamo",  new Double(6.0),  new Integer(30), "Biogesic", "Paracetamol"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"201", "Bioflu", "6", "30", "Bioflu", "Phenylephrine HCI Ibuprofen", "Use for headache"},
+                {"202", "Rexidol", "6", "30", "Rexidol Forte", "Paracetamol Caffeine", "Use for headache"},
+                {"203", "Paracetamol", "6", "30", "Biogesic", "Paracetamol", "Use for headache"},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME"
+                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrollPane2.setViewportView(medtable1);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -266,15 +258,15 @@ public class Pharmacist extends javax.swing.JFrame {
         medtable3.setBackground(new java.awt.Color(153, 153, 255));
         medtable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   401", "Cetirizine", "20.25	", "30", "Zyriz", "Cetirizine Dihydrochloride"},
-                {"   402", "Loratadine", "23.75	", "30", "Lorexa QD", "Loratadine"},
-                {"   403", "Allerta", "22.15", "30", "Allerta", "Dextromethorphan HBr Phenylpropanolamine"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"   401", "Cetirizine", "20", "30", "Zyriz", "Cetirizine Dihydrochloride", "Use for allergy"},
+                {"   402", "Loratadine", "24", "30", "Lorexa QD", "Loratadine HBr", "Use for allergy"},
+                {"   403", "Allerta", "22", "30", "Allerta", "Dextromethorphan HBr Phenylpropanolamine", "Use for allergy"},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME"
+                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane4.setViewportView(medtable3);
@@ -330,9 +322,9 @@ public class Pharmacist extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,6 +451,7 @@ public class Pharmacist extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton allergybutton;
+    private javax.swing.JTable cough_table;
     private javax.swing.JButton coughbutton;
     private javax.swing.JButton headbutton;
     private javax.swing.JLabel jLabel2;
@@ -474,7 +467,6 @@ public class Pharmacist extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton logout;
-    private javax.swing.JTable medtable;
     private javax.swing.JTable medtable1;
     private javax.swing.JTable medtable2;
     private javax.swing.JTable medtable3;

@@ -5,6 +5,12 @@
  */
 package Jframe;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +24,41 @@ public class AddMedCough extends javax.swing.JFrame {
      */
     public AddMedCough() {
         initComponents();
+    }
+    public Connection getConnection(){
+        
+        Connection con;
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/coughmeds", "root", "");
+            return con;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<Medicine> medicinesList()
+    {
+        ArrayList<Medicine> medicinesList = new ArrayList<Medicine>();
+        Connection connection = getConnection();
+        
+        String query = "SELECT * FROM `coughmeds`";
+        Statement st;
+        ResultSet rs;
+        
+        try{
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            Medicine medicine;
+            while(rs.next());
+            {
+                medicine = new Medicine(rs.getInt("medID1"), rs.getString("medname1"), rs.getDouble("price1"),
+                        rs.getInt("quan1"), rs.getString("brand1"), rs.getString("gener1"), rs.getString("desc1")
+                     
+                );
+                   medicinesList.add(medicine);
+            }
+        }
     }
 
     /**
@@ -50,11 +91,11 @@ public class AddMedCough extends javax.swing.JFrame {
         medID1 = new javax.swing.JTextField();
         removebutton1 = new javax.swing.JButton();
         Viewbutton1 = new javax.swing.JButton();
-        combo2 = new javax.swing.JComboBox<>();
+        combo2 = new javax.swing.JComboBox<String>();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        medtable2 = new javax.swing.JTable();
+        cough_table = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -253,7 +294,7 @@ public class AddMedCough extends javax.swing.JFrame {
                 .addGap(82, 82, 82))
         );
 
-        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
+        combo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
         combo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo2ActionPerformed(evt);
@@ -283,8 +324,8 @@ public class AddMedCough extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable2.setBackground(new java.awt.Color(153, 153, 255));
-        medtable2.setModel(new javax.swing.table.DefaultTableModel(
+        cough_table.setBackground(new java.awt.Color(153, 153, 255));
+        cough_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -292,7 +333,7 @@ public class AddMedCough extends javax.swing.JFrame {
                 "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane2.setViewportView(medtable2);
+        jScrollPane2.setViewportView(cough_table);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,10 +420,13 @@ public class AddMedCough extends javax.swing.JFrame {
     private void AddButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton1ActionPerformed
         // TODO add your handling code here:
 
-        DefaultTableModel model =(DefaultTableModel) medtable2.getModel();
+        DefaultTableModel model =(DefaultTableModel) cough_table.getModel();
         model.addRow(new Object[] {medID1.getText(), medname1.getText(),
             price1.getText(), quan1.getText(), brand1.getText(), gener1.getText(), desc1.getText()
         });
+        
+        
+
     }//GEN-LAST:event_AddButton1ActionPerformed
 
     private void medID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID1ActionPerformed
@@ -444,6 +488,7 @@ public class AddMedCough extends javax.swing.JFrame {
     private javax.swing.JButton Viewbutton1;
     private javax.swing.JTextField brand1;
     private javax.swing.JComboBox<String> combo2;
+    private javax.swing.JTable cough_table;
     private javax.swing.JTextField desc1;
     private javax.swing.JTextField gener1;
     private javax.swing.JLabel jLabel1;
@@ -463,7 +508,6 @@ public class AddMedCough extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField medID1;
     private javax.swing.JTextField medname1;
-    private javax.swing.JTable medtable2;
     private javax.swing.JTextField price1;
     private javax.swing.JTextField quan1;
     private javax.swing.JButton removebutton1;
