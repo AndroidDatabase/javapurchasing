@@ -196,15 +196,15 @@ public class Pharmacist extends javax.swing.JFrame {
         cough_table.setBackground(new java.awt.Color(153, 153, 255));
         cough_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   101", "Carbocisteine", "43", "30", "Solmux Advance", "Carbocisteine + Zinc", "Use for cough"},
-                {"   102", "Ambroxol", "33", "30", "Expel OD", "Ambroxol HCI", "Use for asthma"},
-                {"   103", "Paracetamol", "10	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", "Use for cough and fever"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {"   101", "Solmux Advance", "43", "30", "Carbocisteine + Zinc", "Use for cough"},
+                {"   102", "Expel OD", "33", "30", "Ambroxol HCI", "Use for asthma"},
+                {"   103", "Tuseran Forte	", "10", "30", "Dextromethorphan HBr Phenylpropanolamine", "Use for cough and fever"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
+                "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane1.setViewportView(cough_table);
@@ -214,15 +214,15 @@ public class Pharmacist extends javax.swing.JFrame {
         medtable1.setBackground(new java.awt.Color(153, 153, 255));
         medtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"201", "Bioflu", "6", "30", "Bioflu", "Phenylephrine HCI Ibuprofen", "Use for headache"},
-                {"202", "Rexidol", "6", "30", "Rexidol Forte", "Paracetamol Caffeine", "Use for headache"},
-                {"203", "Paracetamol", "6", "30", "Biogesic", "Paracetamol", "Use for headache"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {"201", "Bioflu", "6", "30", "Phenylephrine HCI Ibuprofen", "Use for headache"},
+                {"202", "Rexidol Forte", "6", "30", "Paracetamol Caffeine", "Use for headache"},
+                {"203", "Biogesic", "6", "30", "Paracetamol", "Use for headache"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
+                "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane2.setViewportView(medtable1);
@@ -236,15 +236,15 @@ public class Pharmacist extends javax.swing.JFrame {
         medtable2.setBackground(new java.awt.Color(153, 153, 255));
         medtable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   301", "Paracetamol", "6", "30", "Alaxan", "Ibuprofen + Paracetamol"},
-                {"   302", "Mefenamic", "6", "30", "Expel OD", "Mefenamic Acid"},
-                {"   303", "Ibufrofen", "6", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine"},
+                {"   301", "Alaxan", "6", "30", "Ibuprofen + Paracetamol", "Use to relieve pain"},
+                {"   302", "Expel OD", "6", "30", "Mefenamic Acid", "Use to relieve pain"},
+                {"   303", "Ibufrofen", "6", "30", "Dextromethorphan HBr Phenylpropanolamine", "Use to relieve pain"},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME"
+                "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane3.setViewportView(medtable2);
@@ -258,15 +258,15 @@ public class Pharmacist extends javax.swing.JFrame {
         medtable3.setBackground(new java.awt.Color(153, 153, 255));
         medtable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   401", "Cetirizine", "20", "30", "Zyriz", "Cetirizine Dihydrochloride", "Use for allergy"},
-                {"   402", "Loratadine", "24", "30", "Lorexa QD", "Loratadine HBr", "Use for allergy"},
-                {"   403", "Allerta", "22", "30", "Allerta", "Dextromethorphan HBr Phenylpropanolamine", "Use for allergy"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {"   401", "Zyrix", "20", "30", "Cetirizine Dihydrochloride", "Use for allergy"},
+                {"   402", "Lorexa QD", "24", "30", "Loratadine HBr", "Use for allergy"},
+                {"   403", "Allerta", "22", "30", "Dextromethorphan HBr Phenylpropanolamine", "Use for allergy"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
+                "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
         jScrollPane4.setViewportView(medtable3);

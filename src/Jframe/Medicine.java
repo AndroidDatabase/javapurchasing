@@ -10,56 +10,51 @@ package Jframe;
  * @author toringje_sd2022
  */
 public class Medicine {
-    
-    private int medId;
-    private String medname;
-    private double price ;
-    private int quantity;
+
+    private int id;
     private String brandname;
-    private String generic;
+    private int price;
+    private int quantity;
+    private String genericname;
     private String description;
 
-    public Medicine(int medId, String medname, double price, int quan, String brand, String gener, String desc) {
-        this.medId = medId;
-        this.medname = medname;
+    public Medicine(int id, String brandname, int price, int quantity, String genericname, String description) {
+        this.id = id;
+        this.brandname = brandname;
         this.price = price;
-        this.quantity = quan;
-        this.brandname = brand;
-        this.generic = gener;
-        this.description = desc;
+        this.quantity = quantity;
+        this.genericname = genericname;
+        this.description = description;
     }
 
-    public int getMedId() {
-        return medId;
+    public int getId() {
+        return id;
     }
 
-    public String getMedname() {
-        return medname;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public int getQuan() {
-        return quantity;
-    }
-
-    public String getBrand() {
+    public String getBrandname() {
         return brandname;
     }
 
-    public String getGener() {
-        return generic;
+    public int getPrice() {
+        return price;
     }
 
-    public String getDesc() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getGenericname() {
+        return genericname;
+    }
+
+    public String getDescription() {
         return description;
     }
     
     
+
+   
+
     
-    
-    
-    
+
 }
