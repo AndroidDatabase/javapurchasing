@@ -8,7 +8,6 @@ package Jframe;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -81,6 +80,7 @@ public class AddMedCough extends javax.swing.JFrame {
             model.addRow(row);
 
         }
+//        cough_table.setModel(model);
     }
 
     //Execute the SQL QUERY
@@ -90,6 +90,12 @@ public class AddMedCough extends javax.swing.JFrame {
         try {
             st = con.createStatement();
             if (st.executeUpdate(query) == 1) {
+
+                //Refresh medtable data
+                DefaultTableModel model = (DefaultTableModel) cough_table.getModel();
+                model.setRowCount(0);
+                Show_Medicine_In_JTable();
+                
                 JOptionPane.showMessageDialog(null, "Data" + message + "Successfully");
             } else {
                 JOptionPane.showMessageDialog(null, "Data Not" + message);
@@ -123,11 +129,12 @@ public class AddMedCough extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         generic1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        desc1 = new javax.swing.JTextField();
+        description1 = new javax.swing.JTextField();
         AddButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         medID1 = new javax.swing.JTextField();
         removebutton1 = new javax.swing.JButton();
+        Updatebutton1 = new javax.swing.JButton();
         Viewbutton1 = new javax.swing.JButton();
         combo2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
@@ -202,9 +209,9 @@ public class AddMedCough extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Medicine Use: ");
 
-        desc1.addActionListener(new java.awt.event.ActionListener() {
+        description1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desc1ActionPerformed(evt);
+                description1ActionPerformed(evt);
             }
         });
 
@@ -233,6 +240,14 @@ public class AddMedCough extends javax.swing.JFrame {
             }
         });
 
+        Updatebutton1.setBackground(new java.awt.Color(255, 204, 204));
+        Updatebutton1.setText("UPDATE");
+        Updatebutton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Updatebutton1ActionPerformed(evt);
+            }
+        });
+
         Viewbutton1.setBackground(new java.awt.Color(255, 204, 204));
         Viewbutton1.setText("VIEW");
         Viewbutton1.addActionListener(new java.awt.event.ActionListener() {
@@ -246,35 +261,40 @@ public class AddMedCough extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(generic1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(quantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(description1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(generic1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel1))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(brandname1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medID1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(price1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(AddButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(removebutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(Viewbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel1))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(brandname1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(medID1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(price1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 6, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(AddButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Updatebutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(removebutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Viewbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,13 +322,16 @@ public class AddMedCough extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(desc1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(description1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(removebutton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(removebutton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Updatebutton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(Viewbutton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addGap(82, 82, 82))
+                .addGap(32, 32, 32))
         );
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
@@ -431,15 +454,16 @@ public class AddMedCough extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_generic1ActionPerformed
 
-    private void desc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc1ActionPerformed
+    private void description1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_description1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_desc1ActionPerformed
+    }//GEN-LAST:event_description1ActionPerformed
 
     private void AddButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton1ActionPerformed
         // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) cough_table.getModel();
+         String query = "INSERT INTO `coughmeds`(`id`, `brandname`, `price`, `quantity`, `description`) VALUES ('" + brandname1.getText() + "','" + price1.getText() + "','" + quantity1.getText() + "','" + generic1.getText() + "'," + description1.getText() + ")";
 
-//     String query = "INSERT INTO `coughmeds`(`brandname`, `price`, `quantity`, `genericname`, `description`) VALUES ('"+brandname1.getText()+"','"+price1.getInt())";
-
+        executeSQLQuery(query, "Inserted");
 
     }//GEN-LAST:event_AddButton1ActionPerformed
 
@@ -449,21 +473,26 @@ public class AddMedCough extends javax.swing.JFrame {
 
     private void removebutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton1ActionPerformed
         // TODO add your handling code here:
+        String query = "DELETE FROM `coughmeds` WHERE id = " + medID1.getText();
+        executeSQLQuery(query, "Deleted");
     }//GEN-LAST:event_removebutton1ActionPerformed
 
-    private void Viewbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton1ActionPerformed
+    private void Updatebutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton1ActionPerformed
         // TODO add your handling code here:
-        Pharmacist p = new Pharmacist();
-        p.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_Viewbutton1ActionPerformed
+
+      String query = "UPDATE `coughmeds` SET `brandname`= '" + brandname1.getText() + "',`price`='" + price1.getText() + "',`quantity`='" + quantity1.getText() + "',`genericname`= '" + generic1.getText() + "',`description`= '" + description1.getText() + "' WHERE `id` = " + medID1.getText();
+        executeSQLQuery(query, "Updated");
+
+
+    }//GEN-LAST:event_Updatebutton1ActionPerformed
 
     private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo2ActionPerformed
 
     private void cough_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cough_tableMouseClicked
-        //Display Selected Row
+       
+//Display Selected Row
         int i = cough_table.getSelectedRow();
         TableModel model = cough_table.getModel();
         medID1.setText(model.getValueAt(i, 0).toString());
@@ -471,10 +500,17 @@ public class AddMedCough extends javax.swing.JFrame {
         price1.setText(model.getValueAt(i, 2).toString());
         quantity1.setText(model.getValueAt(i, 3).toString());
         generic1.setText(model.getValueAt(i, 4).toString());
-        desc1.setText(model.getValueAt(i, 5).toString());
+        description1.setText(model.getValueAt(i, 5).toString());
 
 
     }//GEN-LAST:event_cough_tableMouseClicked
+
+    private void Viewbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton1ActionPerformed
+        // TODO add your handling code here:
+        Pharmacist p = new Pharmacist();
+        p.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_Viewbutton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -513,11 +549,12 @@ public class AddMedCough extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton1;
+    private javax.swing.JButton Updatebutton1;
     private javax.swing.JButton Viewbutton1;
     private javax.swing.JTextField brandname1;
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JTable cough_table;
-    private javax.swing.JTextField desc1;
+    private javax.swing.JTextField description1;
     private javax.swing.JTextField generic1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

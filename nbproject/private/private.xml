@@ -2,14 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/2ndyrgroupb/Desktop/javapurchasing/src/Jframe/AddHead.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Desktop/javapurchasing/src/Jframe/Register.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Desktop/javapurchasing/src/Jframe/AddAller.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Desktop/javapurchasing/src/Jframe/Login.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Desktop/javapurchasing/src/Jframe/AddMedPain.java</file>
-            <file>file:/C:/Users/2ndyrgroupb/Desktop/javapurchasing/src/Jframe/AddMedCough.java</file>
-        </group>
         <group name="ibyang"/>
+        <group>
+            <file>file:/C:/Users/toringje_sd2022/Documents/javapurchasing/src/Jframe/Login.java</file>
+            <file>file:/C:/Users/toringje_sd2022/Documents/javapurchasing/src/Jframe/Medicine.java</file>
+            <file>file:/C:/Users/toringje_sd2022/Documents/javapurchasing/src/Jframe/AddMedCough.java</file>
+        </group>
     </open-files>
 </project-private>

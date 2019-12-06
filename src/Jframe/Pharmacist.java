@@ -364,9 +364,9 @@ public class Pharmacist extends javax.swing.JFrame {
     }//GEN-LAST:event_viewallbuttonActionPerformed
 
     private void coughbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coughbuttonMouseClicked
-        AddMedCough cough = new AddMedCough();
-        cough.setVisible(true);
-        this.setVisible(false);
+//        AddMedCough cough = new AddMedCough();
+//        cough.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_coughbuttonMouseClicked
 
     private void coughbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coughbuttonActionPerformed

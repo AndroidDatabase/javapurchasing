@@ -31,26 +31,51 @@ public class Medicine {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getBrandname() {
         return brandname;
+    }
+
+    public void setBrandname(String brandname) {
+        this.brandname = brandname;
     }
 
     public int getPrice() {
         return price;
     }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public int getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getGenericname() {
         return genericname;
     }
 
+    public void setGenericname(String genericname) {
+        this.genericname = genericname;
+    }
+
     public String getDescription() {
         return description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
+
     
 
    
