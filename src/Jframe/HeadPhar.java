@@ -293,7 +293,7 @@ public class HeadPhar extends javax.swing.JFrame {
 
     private void coughbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coughbuttonMouseClicked
         // TODO add your handling code here:
-        CoughPhar cough = new CoughPhar();
+        Customer cough = new Customer();
         cough.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_coughbuttonMouseClicked

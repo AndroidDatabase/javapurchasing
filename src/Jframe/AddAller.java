@@ -5,7 +5,14 @@
  */
 package Jframe;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,6 +25,87 @@ public class AddAller extends javax.swing.JFrame {
      */
     public AddAller() {
         initComponents();
+        Show_Medicine_In_JTable();
+
+    }
+
+    public Connection getConnection() {
+
+        Connection con;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
+            return con;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Medicine> getMedicinesList() {
+
+        ArrayList<Medicine> medicinesList = new ArrayList<Medicine>();
+        Connection connection = getConnection();
+
+        String query = "SELECT * FROM `allergymeds`";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            Medicine medicine;
+            while (rs.next()) {
+                medicine = new Medicine(rs.getInt("id"), rs.getString("brandname"), rs.getInt("price"), rs.getInt("quantity"), rs.getString("genericname"), rs.getString("description"));
+                medicinesList.add(medicine);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return medicinesList;
+    }
+
+    public void Show_Medicine_In_JTable() {
+
+        ArrayList<Medicine> list = getMedicinesList();
+        DefaultTableModel model = (DefaultTableModel) cough_table4.getModel();
+        Object[] row = new Object[6];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getId();
+            row[1] = list.get(i).getBrandname();
+            row[2] = list.get(i).getPrice();
+            row[3] = list.get(i).getQuantity();
+            row[4] = list.get(i).getGenericname();
+            row[5] = list.get(i).getDescription();
+
+            model.addRow(row);
+
+        }
+//        cough_table.setModel(model);
+    }
+
+    //Execute the SQL QUERY
+    public void executeSQLQuery(String query, String message) {
+        Connection con = getConnection();
+        Statement st;
+        try {
+            st = con.createStatement();
+            if (st.executeUpdate(query) == 1) {
+
+                //Refresh medtable data
+                DefaultTableModel model = (DefaultTableModel) cough_table4.getModel();
+                model.setRowCount(0);
+                Show_Medicine_In_JTable();
+
+                JOptionPane.showMessageDialog(null, "Data" + message + "Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Data Not" + message);
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     /**
@@ -34,27 +122,25 @@ public class AddAller extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        medname4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        price4 = new javax.swing.JTextField();
+        brandname4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        quan4 = new javax.swing.JTextField();
+        price4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        brand4 = new javax.swing.JTextField();
+        quantity4 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        gener4 = new javax.swing.JTextField();
+        generic4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        desc4 = new javax.swing.JTextField();
+        description4 = new javax.swing.JTextField();
         AddButton4 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         medID4 = new javax.swing.JTextField();
         removebutton4 = new javax.swing.JButton();
+        Updatebutton4 = new javax.swing.JButton();
         Viewbutton4 = new javax.swing.JButton();
-        combo2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        medtable4 = new javax.swing.JTable();
+        cough_table4 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,14 +173,14 @@ public class AddAller extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Medicine Price: ");
 
-        medname4.addActionListener(new java.awt.event.ActionListener() {
+        brandname4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medname4ActionPerformed(evt);
+                brandname4ActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Medicine Name: ");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Medicine Quantity: ");
 
         price4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,39 +188,30 @@ public class AddAller extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Medicine Quantity: ");
-
-        quan4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quan4ActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Medicine BrandName: ");
 
-        brand4.addActionListener(new java.awt.event.ActionListener() {
+        quantity4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brand4ActionPerformed(evt);
+                quantity4ActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Medicine GenericName: ");
 
-        gener4.addActionListener(new java.awt.event.ActionListener() {
+        generic4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gener4ActionPerformed(evt);
+                generic4ActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Medicine Use: ");
 
-        desc4.addActionListener(new java.awt.event.ActionListener() {
+        description4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desc4ActionPerformed(evt);
+                description4ActionPerformed(evt);
             }
         });
 
@@ -163,6 +240,14 @@ public class AddAller extends javax.swing.JFrame {
             }
         });
 
+        Updatebutton4.setBackground(new java.awt.Color(255, 204, 204));
+        Updatebutton4.setText("UPDATE");
+        Updatebutton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Updatebutton4ActionPerformed(evt);
+            }
+        });
+
         Viewbutton4.setBackground(new java.awt.Color(255, 204, 204));
         Viewbutton4.setText("VIEW");
         Viewbutton4.addActionListener(new java.awt.event.ActionListener() {
@@ -176,43 +261,40 @@ public class AddAller extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(20, 20, 20)
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(medname4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(price4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(quan4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(description4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(generic4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quantity4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(desc4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gener4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(brand4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel1))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(brandname4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medID4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(price4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(83, 83, 83)
-                                .addComponent(medID4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(AddButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(removebutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(Viewbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 6, Short.MAX_VALUE))))
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(AddButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Updatebutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(removebutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Viewbutton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,44 +303,36 @@ public class AddAller extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(medID4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(medname4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(price4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quan4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(brand4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brandname4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gener4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(price4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantity4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(generic4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(desc4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(description4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(removebutton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(removebutton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Updatebutton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(Viewbutton4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addGap(82, 82, 82))
+                .addGap(32, 32, 32))
         );
-
-        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
-        combo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo2ActionPerformed(evt);
-            }
-        });
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -283,20 +357,25 @@ public class AddAller extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable4.setBackground(new java.awt.Color(153, 153, 255));
-        medtable4.setModel(new javax.swing.table.DefaultTableModel(
+        cough_table4.setBackground(new java.awt.Color(153, 153, 255));
+        cough_table4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
+                "MEDICINE ID", " BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane2.setViewportView(medtable4);
+        cough_table4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cough_table4MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(cough_table4);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("ALLERGY  MEDICINE");
+        jLabel11.setText("       ALLERGY MEDICINE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -308,32 +387,26 @@ public class AddAller extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jScrollPane2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(237, 237, 237))))
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel11)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -352,37 +425,33 @@ public class AddAller extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void medname4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medname4ActionPerformed
+    private void brandname4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandname4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_medname4ActionPerformed
+    }//GEN-LAST:event_brandname4ActionPerformed
 
     private void price4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_price4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_price4ActionPerformed
 
-    private void quan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quan4ActionPerformed
+    private void quantity4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantity4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quan4ActionPerformed
+    }//GEN-LAST:event_quantity4ActionPerformed
 
-    private void brand4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brand4ActionPerformed
+    private void generic4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generic4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_brand4ActionPerformed
+    }//GEN-LAST:event_generic4ActionPerformed
 
-    private void gener4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gener4ActionPerformed
+    private void description4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_description4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_gener4ActionPerformed
-
-    private void desc4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desc4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_desc4ActionPerformed
+    }//GEN-LAST:event_description4ActionPerformed
 
     private void AddButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton4ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
 
-        DefaultTableModel model =(DefaultTableModel) medtable4.getModel();
-        model.addRow(new Object[] {medID4.getText(), medname4.getText(),
-            price4.getText(), quan4.getText(), brand4.getText(), gener4.getText(), desc4.getText()
-        });
+        DefaultTableModel model = (DefaultTableModel) cough_table4.getModel();
+        String query = "INSERT INTO `coughmeds`(`id`, `brandname`, `price`, `quantity`, `description`) VALUES ('" + brandname4.getText() + "','" + price4.getText() + "','" + quantity4.getText() + "','" + generic4.getText() + "'," + description4.getText() + ")";
+
+        executeSQLQuery(query, "Inserted");
     }//GEN-LAST:event_AddButton4ActionPerformed
 
     private void medID4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID4ActionPerformed
@@ -391,7 +460,16 @@ public class AddAller extends javax.swing.JFrame {
 
     private void removebutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton4ActionPerformed
         // TODO add your handling code here:
+        String query = "DELETE FROM `coughmeds` WHERE id = " + medID4.getText();
+        executeSQLQuery(query, "Deleted");
     }//GEN-LAST:event_removebutton4ActionPerformed
+
+    private void Updatebutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton4ActionPerformed
+        // TODO add your handling code here:
+
+        String query = "UPDATE `coughmeds` SET `brandname`= '" + brandname4.getText() + "',`price`='" + price4.getText() + "',`quantity`='" + quantity4.getText() + "',`genericname`= '" + generic4.getText() + "',`description`= '" + description4.getText() + "' WHERE `id` = " + medID4.getText();
+        executeSQLQuery(query, "Updated");
+    }//GEN-LAST:event_Updatebutton4ActionPerformed
 
     private void Viewbutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton4ActionPerformed
         // TODO add your handling code here:
@@ -400,9 +478,18 @@ public class AddAller extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_Viewbutton4ActionPerformed
 
-    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo2ActionPerformed
+    private void cough_table4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cough_table4MouseClicked
+
+        //Display Selected Row
+        int i = cough_table4.getSelectedRow();
+        TableModel model = cough_table4.getModel();
+        medID4.setText(model.getValueAt(i, 0).toString());
+        brandname4.setText(model.getValueAt(i, 1).toString());
+        price4.setText(model.getValueAt(i, 2).toString());
+        quantity4.setText(model.getValueAt(i, 3).toString());
+        generic4.setText(model.getValueAt(i, 4).toString());
+        description4.setText(model.getValueAt(i, 5).toString());
+    }//GEN-LAST:event_cough_table4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -441,17 +528,17 @@ public class AddAller extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton4;
+    private javax.swing.JButton Updatebutton4;
     private javax.swing.JButton Viewbutton4;
-    private javax.swing.JTextField brand4;
-    private javax.swing.JComboBox<String> combo2;
-    private javax.swing.JTextField desc4;
-    private javax.swing.JTextField gener4;
+    private javax.swing.JTextField brandname4;
+    private javax.swing.JTable cough_table4;
+    private javax.swing.JTextField description4;
+    private javax.swing.JTextField generic4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -462,10 +549,8 @@ public class AddAller extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField medID4;
-    private javax.swing.JTextField medname4;
-    private javax.swing.JTable medtable4;
     private javax.swing.JTextField price4;
-    private javax.swing.JTextField quan4;
+    private javax.swing.JTextField quantity4;
     private javax.swing.JButton removebutton4;
     // End of variables declaration//GEN-END:variables
 }

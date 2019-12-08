@@ -136,7 +136,6 @@ public class AddMedCough extends javax.swing.JFrame {
         removebutton1 = new javax.swing.JButton();
         Updatebutton1 = new javax.swing.JButton();
         Viewbutton1 = new javax.swing.JButton();
-        combo2 = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -334,13 +333,6 @@ public class AddMedCough extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COUGH MEDICINES", " HEADACHE MEDICINES", "PAIN RELIEVER MEDICINES", "ALLERGY MEDICINES" }));
-        combo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo2ActionPerformed(evt);
-            }
-        });
-
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -394,10 +386,6 @@ public class AddMedCough extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(214, 214, 214)
@@ -409,9 +397,7 @@ public class AddMedCough extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,7 +437,7 @@ public class AddMedCough extends javax.swing.JFrame {
     }//GEN-LAST:event_quantity1ActionPerformed
 
     private void generic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generic1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your han
     }//GEN-LAST:event_generic1ActionPerformed
 
     private void description1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_description1ActionPerformed
@@ -459,9 +445,10 @@ public class AddMedCough extends javax.swing.JFrame {
     }//GEN-LAST:event_description1ActionPerformed
 
     private void AddButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        
          DefaultTableModel model = (DefaultTableModel) cough_table.getModel();
-         String query = "INSERT INTO `coughmeds`(`id`, `brandname`, `price`, `quantity`, `description`) VALUES ('" + brandname1.getText() + "','" + price1.getText() + "','" + quantity1.getText() + "','" + generic1.getText() + "'," + description1.getText() + ")";
+         String query = "INSERT INTO `coughmeds`(`, `brandname`, `price`, `quantity`,`genericname`, `description`)VALUES ('" + brandname1.getText() + "','" + price1.getText() + "','" + quantity1.getText() + "','" + generic1.getText() + "','" + description1.getText() +")";
 
         executeSQLQuery(query, "Inserted");
 
@@ -485,10 +472,6 @@ public class AddMedCough extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_Updatebutton1ActionPerformed
-
-    private void combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo2ActionPerformed
 
     private void cough_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cough_tableMouseClicked
        
@@ -552,7 +535,6 @@ public class AddMedCough extends javax.swing.JFrame {
     private javax.swing.JButton Updatebutton1;
     private javax.swing.JButton Viewbutton1;
     private javax.swing.JTextField brandname1;
-    private javax.swing.JComboBox<String> combo2;
     private javax.swing.JTable cough_table;
     private javax.swing.JTextField description1;
     private javax.swing.JTextField generic1;

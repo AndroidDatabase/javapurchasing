@@ -44,13 +44,13 @@ public class Pharmacist extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         cough_table = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        medtable1 = new javax.swing.JTable();
+        cough_table2 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        medtable2 = new javax.swing.JTable();
+        cough_table3 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        medtable3 = new javax.swing.JTable();
+        cough_table4 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -211,8 +211,8 @@ public class Pharmacist extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable1.setBackground(new java.awt.Color(153, 153, 255));
-        medtable1.setModel(new javax.swing.table.DefaultTableModel(
+        cough_table2.setBackground(new java.awt.Color(153, 153, 255));
+        cough_table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"201", "Bioflu", "6", "30", "Phenylephrine HCI Ibuprofen", "Use for headache"},
                 {"202", "Rexidol Forte", "6", "30", "Paracetamol Caffeine", "Use for headache"},
@@ -225,7 +225,7 @@ public class Pharmacist extends javax.swing.JFrame {
                 "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane2.setViewportView(medtable1);
+        jScrollPane2.setViewportView(cough_table2);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -233,8 +233,8 @@ public class Pharmacist extends javax.swing.JFrame {
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable2.setBackground(new java.awt.Color(153, 153, 255));
-        medtable2.setModel(new javax.swing.table.DefaultTableModel(
+        cough_table3.setBackground(new java.awt.Color(153, 153, 255));
+        cough_table3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"   301", "Alaxan", "6", "30", "Ibuprofen + Paracetamol", "Use to relieve pain"},
                 {"   302", "Expel OD", "6", "30", "Mefenamic Acid", "Use to relieve pain"},
@@ -247,7 +247,7 @@ public class Pharmacist extends javax.swing.JFrame {
                 "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane3.setViewportView(medtable2);
+        jScrollPane3.setViewportView(cough_table3);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -255,8 +255,8 @@ public class Pharmacist extends javax.swing.JFrame {
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        medtable3.setBackground(new java.awt.Color(153, 153, 255));
-        medtable3.setModel(new javax.swing.table.DefaultTableModel(
+        cough_table4.setBackground(new java.awt.Color(153, 153, 255));
+        cough_table4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"   401", "Zyrix", "20", "30", "Cetirizine Dihydrochloride", "Use for allergy"},
                 {"   402", "Lorexa QD", "24", "30", "Loratadine HBr", "Use for allergy"},
@@ -269,7 +269,7 @@ public class Pharmacist extends javax.swing.JFrame {
                 "MEDICINE ID", "BRAND NAME", "PRICE", "QUANTITY", "GENERIC NAME", "DESCRIPTION"
             }
         ));
-        jScrollPane4.setViewportView(medtable3);
+        jScrollPane4.setViewportView(cough_table4);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -320,7 +320,7 @@ public class Pharmacist extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,7 +332,7 @@ public class Pharmacist extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(51, Short.MAX_VALUE))
+                        .addContainerGap(36, Short.MAX_VALUE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -452,6 +452,9 @@ public class Pharmacist extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton allergybutton;
     private javax.swing.JTable cough_table;
+    private javax.swing.JTable cough_table2;
+    private javax.swing.JTable cough_table3;
+    private javax.swing.JTable cough_table4;
     private javax.swing.JButton coughbutton;
     private javax.swing.JButton headbutton;
     private javax.swing.JLabel jLabel2;
@@ -467,9 +470,6 @@ public class Pharmacist extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton logout;
-    private javax.swing.JTable medtable1;
-    private javax.swing.JTable medtable2;
-    private javax.swing.JTable medtable3;
     private javax.swing.JButton painbutton;
     private javax.swing.JButton viewallbutton;
     // End of variables declaration//GEN-END:variables

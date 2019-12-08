@@ -243,7 +243,7 @@ public class Login extends javax.swing.JFrame {
                      a.setVisible(true);
                      this.setVisible(false);
                  }else {
-                     Customer u = new Customer();
+                     Painrelieve u = new Painrelieve();
                      u.setVisible(true);
                      this.setVisible(false);
                  }
