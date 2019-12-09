@@ -7,6 +7,13 @@ package Jframe;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,11 +21,94 @@ import java.awt.event.ActionListener;
  */
 public class Customer extends javax.swing.JFrame {
 
+    private int total = 0;
+
     /**
      * Creates new form Medicines
      */
     public Customer() {
         initComponents();
+        Show_Medicine_In_JTable();
+    }
+
+    public Connection getConnection() {
+
+        Connection con;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
+            return con;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Item> getMedicinesListCough() {
+        ArrayList<Item> itemsList = new ArrayList<Item>();
+        Connection connection = getConnection();
+        String query = "SELECT * FROM `buy`";
+        Statement st;
+        ResultSet rs;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            Item items;
+            while (rs.next()) {
+                total += rs.getInt("total");
+                items = new Item(rs.getInt("medicine_id"), rs.getString("brand_name"), rs.getInt("price"), rs.getInt("quantity"));
+                itemsList.add(items);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemsList;
+    }
+
+    public void Show_Medicine_In_JTable() {
+
+        ArrayList<Item> list;
+        DefaultTableModel model;
+        Object[] row;
+
+        list = getMedicinesListCough();
+        model = (DefaultTableModel) buy_table.getModel();
+        row = new Object[6];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getMedicine_id();
+            row[1] = list.get(i).getBrand_name();
+            row[2] = list.get(i).getPrice();
+            row[3] = list.get(i).getQuantity();
+            model.addRow(row);
+        }
+    }
+
+    public void executeSQLQuery(String query, String message) {
+        Connection con = getConnection();
+        Statement st;
+        try {
+            st = con.createStatement();
+            if (st.executeUpdate(query) == 1) {
+
+                //Refresh medtable data
+                DefaultTableModel model = (DefaultTableModel) buy_table.getModel();
+                model.setRowCount(0);
+                Show_Medicine_In_JTable();
+
+                JOptionPane.showMessageDialog(null, message);
+                total = 0;
+                JOptionPane.showMessageDialog(null, "Thank you. Please come again!");
+                Login a = new Login();
+                a.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Data not changed!");
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     /**
@@ -34,16 +124,15 @@ public class Customer extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Category = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         viewbtn = new javax.swing.JButton();
         coughbtn = new javax.swing.JButton();
         headbtn = new javax.swing.JButton();
         painbtn = new javax.swing.JButton();
         allergybtn = new javax.swing.JButton();
-        logoutbtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        medtable = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        buy_table = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,23 +160,14 @@ public class Customer extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("COUGH  MEDICINES");
-
-        Category.setBackground(new java.awt.Color(204, 204, 204));
-        Category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cough Medicine", "Headache Medicine", "Pain Reliever Medicine", "Allergy Medicine" }));
-        Category.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Category.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CategoryActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("LIST OF ITEMS TO BUY");
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         viewbtn.setBackground(new java.awt.Color(255, 204, 204));
         viewbtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        viewbtn.setText("VIEW ALL MEDICINES");
+        viewbtn.setText("LIST OF MEDICINES TO BUY");
         viewbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewbtnMouseClicked(evt);
@@ -145,20 +225,6 @@ public class Customer extends javax.swing.JFrame {
             }
         });
 
-        logoutbtn.setBackground(new java.awt.Color(255, 204, 204));
-        logoutbtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        logoutbtn.setText("LOGOUT");
-        logoutbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutbtnMouseClicked(evt);
-            }
-        });
-        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutbtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -170,7 +236,6 @@ public class Customer extends javax.swing.JFrame {
                     .addComponent(headbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(allergybtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logoutbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -187,32 +252,28 @@ public class Customer extends javax.swing.JFrame {
                 .addComponent(painbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(allergybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(logoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        medtable.setBackground(new java.awt.Color(153, 153, 255));
-        medtable.setModel(new javax.swing.table.DefaultTableModel(
+        buy_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"   101", "Carbocisteine", "42.5", "30", "Solmux Advance", "Carbocisteine + Zinc", null},
-                {"   102", "Ambroxol", "32.75	", "30", "Expel OD", "Ambroxol HCI", null},
-                {"   103", "Paracetamol", "9.75	", "30", "Tuseran Forte", "Dextromethorphan HBr Phenylpropanolamine", null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "MEDICINE ID", "NAME", "PRICE", "QUANTITY", "BRAND NAME", "GENERIC NAME", "DESCRIPTION"
+                "Medicine ID", "Brand Name", "Price", "Quantity"
             }
         ));
-        jScrollPane1.setViewportView(medtable);
-        if (medtable.getColumnModel().getColumnCount() > 0) {
-            medtable.getColumnModel().getColumn(5).setResizable(false);
-            medtable.getColumnModel().getColumn(6).setResizable(false);
-        }
+        jScrollPane2.setViewportView(buy_table);
+
+        jButton1.setBackground(new java.awt.Color(0, 102, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("PAY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,34 +282,32 @@ public class Customer extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap(327, Short.MAX_VALUE))
+                        .addGap(306, 306, 306))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(340, 340, 340))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(274, Short.MAX_VALUE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,12 +326,6 @@ public class Customer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
-        // TODO add your handling code here:
-        
-      
-    }//GEN-LAST:event_CategoryActionPerformed
-
     private void viewbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewbtnMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_viewbtnMouseClicked
@@ -290,14 +343,14 @@ public class Customer extends javax.swing.JFrame {
 
     private void coughbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coughbtnActionPerformed
         // TODO add your handling code here:
-        Painrelieve meds = new Painrelieve();
+        Cough meds = new Cough();
         meds.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_coughbtnActionPerformed
 
     private void headbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headbtnActionPerformed
         // TODO add your handling code here:
-       Headache meds = new Headache();
+        Headache meds = new Headache();
         meds.setVisible(true);
         this.setVisible(false);
 
@@ -320,23 +373,17 @@ public class Customer extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_allergybtnActionPerformed
 
-    private void logoutbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutbtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logoutbtnMouseClicked
-
-    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
-        // TODO add your handling code here:
-        Login a = new Login();
-        a.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_logoutbtnActionPerformed
-
     private void painbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_painbtnActionPerformed
         // TODO add your handling code here:
-        Cough meds = new Cough();
+        Painrelieve meds = new Painrelieve();
         meds.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_painbtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String query1 = "DELETE FROM `buy`";
+        executeSQLQuery(query1, "You will pay for " + total + ".");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,18 +424,17 @@ public class Customer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Category;
     private javax.swing.JButton allergybtn;
+    private javax.swing.JTable buy_table;
     private javax.swing.JButton coughbtn;
     private javax.swing.JButton headbtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logoutbtn;
-    private javax.swing.JTable medtable;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton painbtn;
     private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables

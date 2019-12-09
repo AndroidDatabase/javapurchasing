@@ -96,7 +96,7 @@ public class AddMedCough extends javax.swing.JFrame {
                 model.setRowCount(0);
                 Show_Medicine_In_JTable();
                 
-                JOptionPane.showMessageDialog(null, "Data" + message + "Successfully");
+                JOptionPane.showMessageDialog(null, "Medicine " + message + " successfully!");
             } else {
                 JOptionPane.showMessageDialog(null, "Data Not" + message);
 
@@ -448,9 +448,9 @@ public class AddMedCough extends javax.swing.JFrame {
         // TODO add your handling code here
         
          DefaultTableModel model = (DefaultTableModel) cough_table.getModel();
-         String query = "INSERT INTO `coughmeds`(`, `brandname`, `price`, `quantity`,`genericname`, `description`)VALUES ('" + brandname1.getText() + "','" + price1.getText() + "','" + quantity1.getText() + "','" + generic1.getText() + "','" + description1.getText() +")";
+         String query = "INSERT INTO `coughmeds`(`brandname`, `price`, `quantity`,`genericname`, `description`)VALUES ('" + brandname1.getText() + "','" + price1.getText() + "','" + quantity1.getText() + "','" + generic1.getText() + "','" + description1.getText() +"')";
 
-        executeSQLQuery(query, "Inserted");
+        executeSQLQuery(query, "added");
 
     }//GEN-LAST:event_AddButton1ActionPerformed
 
@@ -460,15 +460,15 @@ public class AddMedCough extends javax.swing.JFrame {
 
     private void removebutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton1ActionPerformed
         // TODO add your handling code here:
-        String query = "DELETE FROM `coughmeds` WHERE id = " + medID1.getText();
-        executeSQLQuery(query, "Deleted");
+        String query = "DELETE FROM `coughmeds` WHERE `id` = '" + medID1.getText() + "'";
+        executeSQLQuery(query, "deleted");
     }//GEN-LAST:event_removebutton1ActionPerformed
 
     private void Updatebutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton1ActionPerformed
         // TODO add your handling code here:
 
-      String query = "UPDATE `coughmeds` SET `brandname`= '" + brandname1.getText() + "',`price`='" + price1.getText() + "',`quantity`='" + quantity1.getText() + "',`genericname`= '" + generic1.getText() + "',`description`= '" + description1.getText() + "' WHERE `id` = " + medID1.getText();
-        executeSQLQuery(query, "Updated");
+      String query = "UPDATE `coughmeds` SET `brandname`= '" + brandname1.getText() + "',`price`='" + price1.getText() + "',`quantity`='" + quantity1.getText() + "',`genericname`= '" + generic1.getText() + "',`description`= '" + description1.getText() + "' WHERE `id` = '" + medID1.getText() + "'";
+        executeSQLQuery(query, "updated");
 
 
     }//GEN-LAST:event_Updatebutton1ActionPerformed

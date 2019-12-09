@@ -97,9 +97,9 @@ public class AddMedPain extends javax.swing.JFrame {
                 model.setRowCount(0);
                 Show_Medicine_In_JTable();
 
-                JOptionPane.showMessageDialog(null, "Data" + message + "Successfully");
+                JOptionPane.showMessageDialog(null, "Medicine " + message + " successfully!");
             } else {
-                JOptionPane.showMessageDialog(null, "Data Not" + message);
+                JOptionPane.showMessageDialog(null, "Medicine not " + message + "!");
 
             }
         } catch (Exception ex) {
@@ -449,9 +449,9 @@ public class AddMedPain extends javax.swing.JFrame {
         // TODO add your handling code here
 
         DefaultTableModel model = (DefaultTableModel) cough_table3.getModel();
-        String query = "INSERT INTO `coughmeds`(`id`, `brandname`, `price`, `quantity`, `description`) VALUES ('" + brandname3.getText() + "','" + price3.getText() + "','" + quantity3.getText() + "','" + generic3.getText() + "'," + description3.getText() + ")";
+        String query = "INSERT INTO `painrelievermeds`(`brandname`, `price`, `quantity`, `genericname`, `description`) VALUES ('" + brandname3.getText() + "','" + price3.getText() + "','" + quantity3.getText() + "','" + generic3.getText() + "','" + description3.getText() + "')";
 
-        executeSQLQuery(query, "Inserted");
+        executeSQLQuery(query, "added");
     }//GEN-LAST:event_AddButton3ActionPerformed
 
     private void medID3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID3ActionPerformed
@@ -460,15 +460,15 @@ public class AddMedPain extends javax.swing.JFrame {
 
     private void removebutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton3ActionPerformed
         // TODO add your handling code here:
-        String query = "DELETE FROM `coughmeds` WHERE id = " + medID3.getText();
-        executeSQLQuery(query, "Deleted");
+        String query = "DELETE FROM `painrelievermeds` WHERE `id` = '" + medID3.getText() + "'";
+        executeSQLQuery(query, "deleted");
     }//GEN-LAST:event_removebutton3ActionPerformed
 
     private void Updatebutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton3ActionPerformed
         // TODO add your handling code here:
 
-        String query = "UPDATE `coughmeds` SET `brandname`= '" + brandname3.getText() + "',`price`='" + price3.getText() + "',`quantity`='" + quantity3.getText() + "',`genericname`= '" + generic3.getText() + "',`description`= '" + description3.getText() + "' WHERE `id` = " + medID3.getText();
-        executeSQLQuery(query, "Updated");
+        String query = "UPDATE `painrelievermeds` SET `brandname`= '" + brandname3.getText() + "',`price`='" + price3.getText() + "',`quantity`='" + quantity3.getText() + "',`genericname`= '" + generic3.getText() + "',`description`= '" + description3.getText() + "' WHERE `id` = '" + medID3.getText() + "'";
+        executeSQLQuery(query, "updated");
     }//GEN-LAST:event_Updatebutton3ActionPerformed
 
     private void Viewbutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Viewbutton3ActionPerformed

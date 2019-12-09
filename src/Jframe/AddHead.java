@@ -97,9 +97,9 @@ public class AddHead extends javax.swing.JFrame {
                 model.setRowCount(0);
                 Show_Medicine_In_JTable();
 
-                JOptionPane.showMessageDialog(null, "Data" + message + "Successfully");
+                JOptionPane.showMessageDialog(null, "Medicine " + message + " successfully!");
             } else {
-                JOptionPane.showMessageDialog(null, "Data Not" + message);
+                JOptionPane.showMessageDialog(null, "Medicine not " + message + "!");
 
             }
         } catch (Exception ex) {
@@ -449,9 +449,9 @@ public class AddHead extends javax.swing.JFrame {
         // TODO add your handling code here
 
         DefaultTableModel model = (DefaultTableModel) cough_table2.getModel();
-        String query = "INSERT INTO `coughmeds`(`id`, `brandname`, `price`, `quantity`, `description`) VALUES ('" + brandname2.getText() + "','" + price2.getText() + "','" + quantity2.getText() + "','" + generic2.getText() + "'," + description2.getText() + ")";
+        String query = "INSERT INTO `headachemeds`(`brandname`, `price`, `quantity`, `genericname`, `description`) VALUES ('" + brandname2.getText() + "','" + price2.getText() + "','" + quantity2.getText() + "','" + generic2.getText() + "','" + description2.getText() + "')";
 
-        executeSQLQuery(query, "Inserted");
+        executeSQLQuery(query, "added");
     }//GEN-LAST:event_AddButton2ActionPerformed
 
     private void medID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medID2ActionPerformed
@@ -460,15 +460,15 @@ public class AddHead extends javax.swing.JFrame {
 
     private void removebutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebutton2ActionPerformed
         // TODO add your handling code here:
-        String query = "DELETE FROM `coughmeds` WHERE id = " + medID2.getText();
-        executeSQLQuery(query, "Deleted");
+        String query = "DELETE FROM `headachemeds` WHERE `id` = '" + medID2.getText() + "'";
+        executeSQLQuery(query, "deleted");
     }//GEN-LAST:event_removebutton2ActionPerformed
 
     private void Updatebutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton2ActionPerformed
         // TODO add your handling code here:
 
-        String query = "UPDATE `coughmeds` SET `brandname`= '" + brandname2.getText() + "',`price`='" + price2.getText() + "',`quantity`='" + quantity2.getText() + "',`genericname`= '" + generic2.getText() + "',`description`= '" + description2.getText() + "' WHERE `id` = " + medID2.getText();
-        executeSQLQuery(query, "Updated");
+        String query = "UPDATE `headachemeds` SET `brandname`= '" + brandname2.getText() + "',`price`='" + price2.getText() + "',`quantity`='" + quantity2.getText() + "',`genericname`= '" + generic2.getText() + "',`description`= '" + description2.getText() + "' WHERE `id` = '" + medID2.getText() + "'";
+        executeSQLQuery(query, "updated");
 
     }//GEN-LAST:event_Updatebutton2ActionPerformed
 
