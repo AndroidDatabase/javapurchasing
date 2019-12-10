@@ -146,7 +146,7 @@ public class Headache extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("                                                   JESSMEL PHARMACY");
+        jLabel2.setText("                                                   MORRE PHARMACY");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -412,7 +412,7 @@ public class Headache extends javax.swing.JFrame {
         String query1 = "UPDATE `headachemeds` SET `quantity` = '" + newquantity + "' WHERE `id` = '" + medicine_id2.getText() + "'";
         executeSQLQuery(query1, "Headache medicines updated!");
         String query = "INSERT INTO `buy`(`medicine_id`, `brand_name`, `price`,`quantity`, `total`)VALUES ('" + medicine_id2.getText() + "','" + brand_name2.getText() + "','" + price2.getText() + "','" + quantity2.getText() + "','" + total + "')";
-        executeSQLQuery(query, "Medicine added to the list of items to buy!");
+        executeSQLQuery(query, "Medicine added to your receipt!");
     }//GEN-LAST:event_buy_button2ActionPerformed
 
     private void cough_table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cough_table2MouseClicked

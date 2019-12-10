@@ -123,7 +123,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        user_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pharmacist", "Customer" }));
+        user_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer" }));
         user_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 user_typeActionPerformed(evt);

@@ -141,7 +141,7 @@ public class Cough extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("                                            JESSMEL PHARMACY");
+        jLabel2.setText("                                            MORRE PHARMACY");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -401,7 +401,7 @@ public class Cough extends javax.swing.JFrame {
         String query1 = "UPDATE `coughmeds` SET `quantity` = '" + newquantity +"' WHERE `id` = '" + medicine_id.getText() + "'";
         executeSQLQuery(query1, "Cough medicines updated!");
         String query = "INSERT INTO `buy`(`medicine_id`, `brand_name`, `price`,`quantity`, `total`)VALUES ('" + medicine_id.getText() + "','" + brand_name.getText() + "','" + price.getText() + "','" + quantity.getText()+ "','" + total + "')";
-        executeSQLQuery(query, "Medicine added to the list of items to buy!");
+        executeSQLQuery(query, "Medicine added to your receipt!");
     }//GEN-LAST:event_buy_buttonActionPerformed
 
     private void cough_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cough_tableMouseClicked
