@@ -103,9 +103,7 @@ public class AddAller extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("Error");
-            JOptionPane.showMessageDialog(null, "Error!");
+                JOptionPane.showMessageDialog(null, "Price and quantity should be integer!");
 
         }
     }
@@ -464,6 +462,12 @@ public class AddAller extends javax.swing.JFrame {
         // TODO add your handling code here:
         String query = "DELETE FROM `allergymeds` WHERE `id` = '" + medID4.getText() + "'";
         executeSQLQuery(query, "deleted");
+        medID4.setText("");
+        brandname4.setText("");
+        price4.setText("");
+        quantity4.setText("");
+        generic4.setText("");
+        description4.setText("");
     }//GEN-LAST:event_removebutton4ActionPerformed
 
     private void Updatebutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton4ActionPerformed

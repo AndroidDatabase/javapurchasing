@@ -102,7 +102,7 @@ public class AddMedCough extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Price and quantity should be integer!");
 
         }
     }
@@ -462,6 +462,12 @@ public class AddMedCough extends javax.swing.JFrame {
         // TODO add your handling code here:
         String query = "DELETE FROM `coughmeds` WHERE `id` = '" + medID1.getText() + "'";
         executeSQLQuery(query, "deleted");
+        medID1.setText("");
+        brandname1.setText("");
+        price1.setText("");
+        quantity1.setText("");
+        generic1.setText("");
+        description1.setText("");
     }//GEN-LAST:event_removebutton1ActionPerformed
 
     private void Updatebutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton1ActionPerformed

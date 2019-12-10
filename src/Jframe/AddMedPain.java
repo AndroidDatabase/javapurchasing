@@ -103,7 +103,7 @@ public class AddMedPain extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Price and quantity should be integer!");
 
         }
     }
@@ -375,7 +375,7 @@ public class AddMedPain extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("       PAINRELIEVER MEDICINE");
+        jLabel11.setText("PAINRELIEVER MEDICINE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -462,6 +462,12 @@ public class AddMedPain extends javax.swing.JFrame {
         // TODO add your handling code here:
         String query = "DELETE FROM `painrelievermeds` WHERE `id` = '" + medID3.getText() + "'";
         executeSQLQuery(query, "deleted");
+        medID3.setText("");
+        brandname3.setText("");
+        price3.setText("");
+        quantity3.setText("");
+        generic3.setText("");
+        description3.setText("");
     }//GEN-LAST:event_removebutton3ActionPerformed
 
     private void Updatebutton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton3ActionPerformed

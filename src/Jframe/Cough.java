@@ -98,7 +98,7 @@ public class Cough extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Quantity is required!");
 
         }
     }

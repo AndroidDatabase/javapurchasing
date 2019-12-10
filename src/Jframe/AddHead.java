@@ -103,7 +103,7 @@ public class AddHead extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Price and quantity should be integer!");
 
         }
     }
@@ -462,6 +462,12 @@ public class AddHead extends javax.swing.JFrame {
         // TODO add your handling code here:
         String query = "DELETE FROM `headachemeds` WHERE `id` = '" + medID2.getText() + "'";
         executeSQLQuery(query, "deleted");
+        medID2.setText("");
+        brandname2.setText("");
+        price2.setText("");
+        quantity2.setText("");
+        generic2.setText("");
+        description2.setText("");
     }//GEN-LAST:event_removebutton2ActionPerformed
 
     private void Updatebutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updatebutton2ActionPerformed
