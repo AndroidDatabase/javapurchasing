@@ -229,7 +229,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
              Class.forName("com.mysql.jdbc.Driver");
-             String query = "SELECT * FROM `register` WHERE `username`='"+usertext.getText()+"' and `password` ='"+String.valueOf(passwordtext.getPassword())+"' and `user`='"+String.valueOf(usertype.getSelectedItem())+"'";
+             String query = "SELECT * FROM `users` WHERE `username`='"+usertext.getText()+"' and `password` ='"+String.valueOf(passwordtext.getPassword())+"' and `user`='"+String.valueOf(usertype.getSelectedItem())+"'";
              con=  DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
              pst = con.prepareStatement(query);
 //             pst.setString(1,usertext.getText());

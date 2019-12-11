@@ -238,7 +238,7 @@ public class Register extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection register = DriverManager.getConnection("jdbc:mysql://localhost:3306/jessmelphar", "root", "");
-            String query = "INSERT INTO Register(`username`, `age`, `email`, `password`, `user`)" + " VALUES (?,?,?,?, ?)";
+            String query = "INSERT INTO `users`(`username`, `age`, `email`, `password`, `user`)" + " VALUES (?,?,?,?, ?)";
             PreparedStatement stmt = register.prepareStatement(query);
             stmt.setString(1, username.getText());
             stmt.setString(2, age.getText());
