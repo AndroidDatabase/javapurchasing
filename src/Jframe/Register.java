@@ -260,7 +260,6 @@ public class Register extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Username or email already exist!");
             System.err.println("Got an exception");
-            System.err.println(e.getMessage());
         }
 
 

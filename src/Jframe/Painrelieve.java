@@ -97,7 +97,7 @@ public class Painrelieve extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Quantity is required!");
+                JOptionPane.showMessageDialog(null, "Price and quantity should be integer!");
 
         }
     }

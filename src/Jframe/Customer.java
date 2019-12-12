@@ -103,7 +103,7 @@ public class Customer extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Price and quantity should be integer!");
 
         }
     }
